@@ -1,0 +1,6 @@
+---
+layout: recipe-layout.html
+---
+{% for recipe in collections.recipe %}
+<h2><a href="{{recipe.url}}">{{ recipe.data.title }}</a></h2>
+{% endfor %}
