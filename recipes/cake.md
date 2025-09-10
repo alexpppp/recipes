@@ -4,4 +4,4 @@ tags: ["baking"]
 ---
 Cake steps
 
-![Chocolate Cake](/img/citrus-cake.jpg)
+![Citrus Cake]({{ pathPrefix }}/img/citrus-cake.jpg)

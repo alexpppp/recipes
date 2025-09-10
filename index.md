@@ -10,3 +10,8 @@ layout: recipe-layout.html
 {% for recipe in collections.baking %}
 <p><a href="{{recipe.url}}">{{ recipe.data.title }}</a></p>
 {% endfor %}
+
+<figure>
+![Citrus Cake]({{ pathPrefix }}img/citrus-cake.jpg)
+<figcaption>Citrus Cake</figcaption>
+</figure>
