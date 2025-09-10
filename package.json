@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "eleventy",
-    "start": "eleventy --serve --output=docs"
+    "build": "ENV=prod eleventy",
+    "dev": "ENV=dev eleventy --serve --output=docs"
   },
   "repository": {
     "type": "git",

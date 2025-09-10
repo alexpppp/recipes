@@ -12,6 +12,8 @@ layout: recipe-layout.html
 {% endfor %}
 
 <figure>
-![Citrus Cake]({{ pathPrefix }}img/citrus-cake.jpg)
+
+![Citrus Cake](/img/citrus-cake.jpg)
+
 <figcaption>Citrus Cake</figcaption>
 </figure>
