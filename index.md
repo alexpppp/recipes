@@ -1,7 +1,8 @@
 ---
 layout: recipe-layout.html
 ---
-<input type="text" id="search-input" placeholder="Search..." />
+<input id="search-input" type="search" placeholder="Search...">
+
 <div id="tag-buttons">
   <button data-tag="all" class="tag-button active">All</button>
   <button data-tag="dessert" class="tag-button">Dessert</button>
@@ -11,12 +12,17 @@ layout: recipe-layout.html
 
 <ul id="recipe-list">
     {% for recipe in collections.recipe %}
-        <li data-tags="{{ recipe.data.tags | join(' ') }}" ><a href="{{ recipe.url | url }}">{{ recipe.data.title }}</a> 
+        <li data-tags="{{ recipe.data.tags | join(' ') }}" >
+        <a href="{{ recipe.url | url }}">       
+        <div class="recipe-card">
+          <h4>{{ recipe.data.title }}</h4>
         {% for tag in recipe.data.tags %}
             {% if tag != "recipe" %}
                 <kbd>{{ tag[0] | upper }}{{ tag.slice(1) }}</kbd>
             {% endif %}
         {% endfor %}
+        </div>
+        </a>
         </li>
         {% endfor %}
 </ul>

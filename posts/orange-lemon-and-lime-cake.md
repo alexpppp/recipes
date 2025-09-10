@@ -6,33 +6,35 @@ tags: ["baking"]
 
 ![Citrus Cake]({{ '/img/orange-lemon-and-lime-cake.jpg' | url }})
 
-## Ingredients
+<div class="recipe-card">
 
-- 300g butter, softened  
-- 300g white or caster sugar  
-- 6 eggs  
-- 2 tsp vanilla extract  
-- 300g ground almonds  
-- 75g spelt flour  
-- Zest and juice of 1 large lemon  
-- Zest and juice of 1 large lime  
-- 1 tbsp orange blossom water  
-  - *(or substitute with orange zest and orange essence)*
+  #### Ingredients
+  - 300g butter, softened  
+  - 300g white or caster sugar  
+  - 6 eggs  
+  - 2 tsp vanilla extract  
+  - 300g ground almonds  
+  - 75g spelt flour  
+  - Zest and juice of 1 large lemon  
+  - Zest and juice of 1 large lime  
+  - 1 tbsp orange blossom water  
+    - *(or substitute with orange zest and orange essence)*
 
-#### Icing
+  **Icing**
 
-- 300g cream cheese  
-- 4 tbsp honey  
-- Zest and juice of ½ lemon  
-- ½ tsp vanilla extract  
+  - 300g cream cheese  
+  - 4 tbsp honey  
+  - Zest and juice of ½ lemon  
+  - ½ tsp vanilla extract  
 
-#### To Top *(all optional!)*
+  **To Top** (all optional!)
+  - Lemon or lime curd  
+  - Chopped pistachios  
+  - Freeze-dried lime chips  
 
-- Lemon or lime curd  
-- Chopped pistachios  
-- Freeze-dried lime chips  
+</div>
 
-## Method
+#### Method
 1. Preheat oven to 180 degrees Celsius, fan bake. Line three 15cm tins (or two 25 cm tins) with baking paper.
 2. Cream the butter and sugar until pale, light and fluffy.
 3. Beat in eggs, one at a time, as well as vanilla.
