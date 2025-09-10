@@ -4,6 +4,9 @@
   <title>Recipes by Michelle & Alex</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/cdn/themes/light.css" />
   <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
+  <link rel="stylesheet" href="/recipes/css/custom.css">
+
+  <link href="https://fonts.googleapis.com/css2?family=Caveat&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
@@ -14,20 +17,30 @@
         <p>By Michelle & Alex</p>
     </header>
     <main>
-        <input type="text" id="search-input" placeholder="Search..." />
+        <input id="search-input" type="search" placeholder="Search...">
 <div id="tag-buttons">
   <button data-tag="all" class="tag-button active">All</button>
   <button data-tag="dessert" class="tag-button">Dessert</button>
   <button data-tag="baking" class="tag-button">Baking</button>
 </div>
 <ul id="recipe-list">
-<p><li data-tags="recipe baking dessert" ><a href="/recipes/posts/brownie/">Brownie</a></p>
+<p><li data-tags="recipe baking dessert" >
+<a href="/recipes/posts/brownie/"><br>
+<div class="recipe-card">
+<h4>Brownie</h4></p>
 <p><kbd>Baking</kbd></p>
 <p><kbd>Dessert</kbd></p>
-<p></li></p>
-<p><li data-tags="recipe baking" ><a href="/recipes/posts/orange-lemon-and-lime-cake/">Orange, Lemon &amp; Lime Cake</a></p>
+<p></div>
+</a>
+</li></p>
+<p><li data-tags="recipe baking" >
+<a href="/recipes/posts/orange-lemon-and-lime-cake/"><br>
+<div class="recipe-card">
+<h4>Orange, Lemon &amp; Lime Cake</h4></p>
 <p><kbd>Baking</kbd></p>
-<p></li></p>
+<p></div>
+</a>
+</li></p>
 </ul>
 <p id="no-results" style="display: none; font-style: italic; color: gray;">
   No matches found.
