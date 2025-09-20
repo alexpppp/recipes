@@ -1,54 +1,136 @@
 <!doctype html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Recipes by Michelle & Alex</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/cdn/themes/light.css" />
-  <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Recipes by Michelle &amp; Alex</title>
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
   <link rel="stylesheet" href="/recipes/css/custom.css">
 
-  <link href="https://fonts.googleapis.com/css2?family=Caveat&display=swap" rel="stylesheet">
+  <!-- Font Awesome CDN -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-    <header>
-        <nav>
-            <a href="/recipes/"><?xml version="1.0"?><svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 32 32" width="32px" height="32px"><path d="M 16 2.59375 L 15.28125 3.28125 L 2.28125 16.28125 L 3.71875 17.71875 L 5 16.4375 L 5 28 L 14 28 L 14 18 L 18 18 L 18 28 L 27 28 L 27 16.4375 L 28.28125 17.71875 L 29.71875 16.28125 L 16.71875 3.28125 Z M 16 5.4375 L 25 14.4375 L 25 26 L 20 26 L 20 16 L 12 16 L 12 26 L 7 26 L 7 14.4375 Z"/></svg></a>
-        </nav>
-        <h1>Recipes</h1> 
-        <p>By Michelle & Alex</p>
-    </header>
-    <main>
-        <input id="search-input" type="search" placeholder="Search...">
-<div id="tag-buttons">
-  <button data-tag="all" class="tag-button active">All</button>
-  <button data-tag="dessert" class="tag-button">Dessert</button>
-  <button data-tag="baking" class="tag-button">Baking</button>
+    <div class="page-wrapper">
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="/recipes/">
+                <span class="icon is-large is-left has-text-success">
+                    <i class="fas fa-2x fa-home"></i>
+                </span>
+            </a>
+            <div class="navbar-item">
+                <h2 class="is-size-4"><strong>Recipes </strong><span class="has-text-weight-light is-size-6">by M & A</span>
+</h2>
+            </div>
+        </div>
+    </nav>
+    <main class="has-background-light pb-5">
+        <div>
+<section class="hero">
+  <div class="hero-body">
+    <div class="block">
+      <div class="control has-icons-left">
+        <input id="search-input" class="input" type="search" />
+        <span class="icon is-medium is-left"><i class="fas fa-search"></i></span>
+      </div>
+    </div>
+    <div class="block">
+      <div id="tag-buttons" class="buttons has-addons">
+        <button data-tag="all" class="button is-primary is-active">All</button>
+        <button data-tag="dessert" class="button is-primary">Dessert</button>
+        <button data-tag="baking" class="button is-primary">Baking</button>
+        <button data-tag="dinner" class="button is-primary">Dinner</button>
+      </div>
+    </div>
+  </div>
+</section>
+<section>
+  <div class="container">
+    <div id="recipe-list">
+<p><a href="/recipes/posts/brownie/">
+<div class="box" data-tags="recipe baking dessert" >
+<article class="media"></p>
+<p><div>
+<div class="content">
+<h2 class="title is-5">Brownie</h2>
+<div class="tags has-addons"></p>
+<p><span class="tag is-primary is-light">Baking</span></p>
+<p><span class="tag is-primary is-light">Dessert</span></p>
+<p></div>
 </div>
-<ul id="recipe-list">
-<p><li data-tags="recipe baking dessert" >
-<a href="/recipes/posts/brownie/"><br>
-<div class="recipe-card">
-<h4>Brownie</h4></p>
-<p><kbd>Baking</kbd></p>
-<p><kbd>Dessert</kbd></p>
+</div>
+</article>
+</div>
+</a></p>
+<p><a href="/recipes/posts/cheese-scones/">
+<div class="box" data-tags="recipe baking" >
+<article class="media"></p>
+<p><div>
+<div class="content">
+<h2 class="title is-5">Cheese Scones</h2>
+<div class="tags has-addons"></p>
+<p><span class="tag is-primary is-light">Baking</span></p>
 <p></div>
-</a>
-</li></p>
-<p><li data-tags="recipe baking" >
-<a href="/recipes/posts/orange-lemon-and-lime-cake/"><br>
-<div class="recipe-card">
-<h4>Orange, Lemon &amp; Lime Cake</h4></p>
-<p><kbd>Baking</kbd></p>
+</div>
+</div>
+</article>
+</div>
+</a></p>
+<p><a href="/recipes/posts/oliebollen/">
+<div class="box" data-tags="recipe dessert" >
+<article class="media"></p>
+<p><div>
+<div class="content">
+<h2 class="title is-5">Oliebollen (Dutch Donuts)</h2>
+<div class="tags has-addons"></p>
+<p><span class="tag is-primary is-light">Dessert</span></p>
 <p></div>
-</a>
-</li></p>
-</ul>
-<p id="no-results" style="display: none; font-style: italic; color: gray;">
-  No matches found.
-</p>
+</div>
+</div>
+</article>
+</div>
+</a></p>
+<p><a href="/recipes/posts/orange-lemon-and-lime-cake/">
+<div class="box" data-tags="recipe baking" >
+<article class="media"></p>
+<p><div>
+<div class="content">
+<h2 class="title is-5">Orange, Lemon &amp; Lime Cake</h2>
+<div class="tags has-addons"></p>
+<p><span class="tag is-primary is-light">Baking</span></p>
+<p></div>
+</div>
+</div>
+</article>
+</div>
+</a></p>
+<p><a href="/recipes/posts/pizza/">
+<div class="box" data-tags="recipe dinner" >
+<article class="media"></p>
+<p><div>
+<div class="content">
+<h2 class="title is-5">Pizza</h2>
+<div class="tags has-addons"></p>
+<p><span class="tag is-primary is-light">Dinner</span></p>
+<p></div>
+</div>
+</div>
+</article>
+</div>
+</a></p>
+<p></div>
+<div id="no-results" style="display: none;" class="block has-background-light p-5 is-italic">
+<span class="icon is-medium is-left"><i class="fas fa-triangle-exclamation"></i></span>Sorry, no matches!
+</div></p>
+  </div>
+</section>
 <script>
   const searchInput = document.getElementById('search-input');
-  const tagButtons = document.querySelectorAll('.tag-button');
-  const recipeItems = document.querySelectorAll('#recipe-list li');
+  const tagButtons = document.querySelectorAll('#tag-buttons .button'); // Make sure this matches your HTML
+  const recipeItems = document.querySelectorAll('#recipe-list .box');
 
   let activeTag = 'all';
 
@@ -68,23 +150,30 @@
 
       if (shouldShow) visibleCount++;
     });
-    // Show or hide the "no results" message
-  document.getElementById('no-results').style.display = visibleCount === 0 ? '' : 'none';
+
+    document.getElementById('no-results').style.display = visibleCount === 0 ? '' : 'none';
   }
 
   // 🔍 Search listener
   searchInput.addEventListener('input', filterRecipes);
 
-  // 🏷 Tag buttons listener
+  // 🏷 Tag button listeners
   tagButtons.forEach(button => {
     button.addEventListener('click', () => {
-      tagButtons.forEach(btn => btn.classList.remove('active'));
-      button.classList.add('active');
+      // Remove 'is-active' from all buttons
+      tagButtons.forEach(btn => btn.classList.remove('is-active'));
+
+      // Add 'is-active' to clicked button
+      button.classList.add('is-active');
+
+      // Set active tag and filter
       activeTag = button.dataset.tag;
       filterRecipes();
     });
   });
 </script>
+</div>
     </main>
+</div>
 </body>
 </html>
