@@ -1,0 +1,20 @@
+---
+layout: base.njk
+---
+<div class="page-wrapper">
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="{{ '/' | url }}">
+                <span class="icon is-large is-left has-text-success">
+                    <i class="fas fa-2x fa-home"></i>
+                </span>
+            </a>
+            <div class="navbar-item">
+                <h2 class="is-size-4">{{ pageTitle | safe}}</h2>
+            </div>
+        </div>
+    </nav>
+    <main class="has-background-light pb-5">
+        {{ content | safe }}
+    </main>
+</div>

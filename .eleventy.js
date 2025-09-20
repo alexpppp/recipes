@@ -3,6 +3,7 @@ const isProd = process.env.ENV === "prod";
 export default function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy('img');
   eleventyConfig.addPassthroughCopy('css');
+  eleventyConfig.addPassthroughCopy('favicon.ico');
     return {
       markdownTemplateEngine: "njk",
       pathPrefix: isProd ? "/recipes/" : "/",  // Only apply in production for GH pages

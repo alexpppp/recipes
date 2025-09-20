@@ -1,112 +1,26 @@
-/* -------------------------------
-   Header Bar (Full Override)
--------------------------------- */
-header {
-    background-color: #e7f0ec !important; /* duck egg blue */
-    border: none !important;
-    box-shadow: none !important;
-    padding: 2rem 1rem;
-  }
-  
-  header *,
-  header a {
-    color: #2f3e3b !important;
-    text-decoration: none;
-    border: none;
-    box-shadow: none;
-  }
-  
-  header nav a:hover,
-  header nav a:focus {
-    color: #2e4f49 !important;
-    text-decoration: underline;
-  }
-  
-  /* -------------------------------
-     Buttons
-  -------------------------------- */
-  button,
-  input[type="submit"],
-  .button {
-    background-color: #cce3dd;
-    color: #2f3e3b;
-    border: none;
-    border-radius: 0;
-    box-shadow: none;
-    padding: 0.5rem 1rem;
-  }
-  
-  button:hover,
-  input[type="submit"]:hover,
-  .button:hover {
-    background-color: #b4d3cc;
-  }
-  
-  button:focus,
-  input[type="submit"]:focus,
-  .button:focus {
-    outline: 2px solid #8fbab0;
-    outline-offset: 2px;
-  }
-  
-  /* -------------------------------
-     Links
-  -------------------------------- */
-  a {
-    color: #4c7e72;
-    text-decoration: none;
-  }
-  
-  a:hover,
-  a:focus {
-    color: #2e4f49;
-    text-decoration: underline;
-  }
-  
-  /* -------------------------------
-     Forms
-  -------------------------------- */
-  input,
-  textarea,
-  select {
-    border: none;
-    border-radius: 0;
-    background-color: #f7faf9;
-    color: #2f3e3b;
-    box-shadow: none;
-  }
-  
-  input:focus,
-  textarea:focus,
-  select:focus {
-    outline: 2px solid #8fbab0;
-    outline-offset: 2px;
-  }
-  
-  /* -------------------------------
-     Notice Boxes or Sections
-  -------------------------------- */
-  .notice,
-  .recipe-card {
-    background-color: #e7f0ec;
-    border: none;
-    border-radius: 0;
-    box-shadow: none;
-    padding: 1.5rem;
-    color: #2f3e3b;
-  }
-  
-  .recipe-card h2,
-  .recipe-card h3 {
-    color: #52796f;
-    margin-top: 0;
-  }
-  
-  .recipe-card ul {
-    list-style: disc inside;
-    padding-left: 1rem;
-  }
-  
-  .recipe-card em {
-    color: #7b6357;
-  }
+/* Ensure page fills full height */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Page layout wrapper to control vertical structure */
+.page-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Allow main content to grow and fill remaining space */
+main {
+  flex: 1;
+}
+
+#recipe-meta .column {
+  padding: .15rem;
+}
+
+#recipe-list {
+  margin: 0 10px;
+}

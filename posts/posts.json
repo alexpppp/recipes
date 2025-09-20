@@ -1,4 +1,4 @@
 {
-    "layout": "recipe-layout.html",
+    "layout": "recipe-layout.njk",
     "tags": "recipe"
 }
