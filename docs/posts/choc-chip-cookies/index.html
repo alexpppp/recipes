@@ -1,10 +1,22 @@
----
-layout: base.njk
----
-<div class="page-wrapper">
+<!doctype html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Sez &amp; Vicky’s Choc Chip Cookies</title>
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link rel="stylesheet" href="/css/custom.css">
+
+  <!-- Font Awesome CDN -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div class="page-wrapper">
     <nav class="navbar" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
-            <a class="navbar-item" href="{{ '/' | url }}">
+            <a class="navbar-item" href="/">
                 <span class="icon is-large is-left has-text-success">
                     <i class="fas fa-2x fa-home"></i>
                 </span>
@@ -21,79 +33,71 @@ layout: base.njk
         <section class="section">
           <div class="container is-max-desktop p-6-desktop">
             <!-- Title -->
-            <h1 class="title">{{ title }}</h1>
+            <h1 class="title">Sez &amp; Vicky’s Choc Chip Cookies</h1>
              <!-- Meta Info (Time, Servings, Tags) -->
             <div id="recipe-meta" class="columns is-mobile is-multiline is-variable is-1">
-              {% if time %}
-              <div class="column is-narrow">
-                <span class="icon"><i class="fas fa-clock"></i></span> 
-                <span>{{ time }}</span>
-              </div>
-              {% endif %}
-              {% if servings %}
-              <div class="column is-narrow">
-                <span class="icon"><i class="fas fa-user-friends"></i></span> 
-                <span>{{ servings }} servings</span>
-              </div>
-              {% endif %}
-              {% if tags %}
+              
+              
+              
               <div class="column is-full">
                 <div class="tags are-medium">
-                  {% for tag in tags %}
-                    {% if tag != "recipe" %}
-                      <span class="tag is-primary is-light">{{ tag[0] | upper }}{{ tag.slice(1) }}</span>
-                    {% endif %}
-                  {% endfor %}
+                  
+                    
+                  
+                    
+                      <span class="tag is-primary is-light">Baking</span>
+                    
+                  
+                    
+                      <span class="tag is-primary is-light">Snack</span>
+                    
+                  
                 </div>
               </div>
-              {% endif %}
+              
             </div>
             <!-- Image -->
-            {% if imgFile %}
-            <figure class="image mb-5">
-              <img src="{{ ('/img/' + imgFile) | url }}" alt="Photo of {{ title }}">
-            </figure>
-            {% endif %}
+            
             <div class="content">
-            {% if source %}
-            <blockquote>{{ source }}</blockquote>
-            {% endif %}
+            
             <!-- Ingredients and Instructions -->
-              {% if ingredients %}
+              
               <h2 class="subtitle is-4"><span class="icon"><i class="fas fa-spoon"></i></span> Ingredients</h2>
                 <ul>
                 <div class="has-text-weight-light">
-                  {% for item in ingredients %}
-                    <li>{{ item }}</li>
-                  {% endfor %}
+                  
+                    <li>225g butter</li>
+                  
+                    <li>1 cup sugar</li>
+                  
+                    <li>4 tbsp sweetened condensed milk (about 1/2 tin)</li>
+                  
+                    <li>170g dark chocolate chips</li>
+                  
+                    <li>3 cups flour</li>
+                  
+                    <li>2 tsp baking powder</li>
+                  
                   </div>
                 </ul>
-              {% endif %}
-              {% if icing %}
-              <h2 class="subtitle is-5">Icing</h2>
-                <ul>
-                <div class="has-text-weight-light">
-                  {% for item in icing %}
-                    <li>{{ item }}</li>
-                  {% endfor %}
-                  </div>
-                </ul>
-              {% endif %}
-              {% if topping %}
-              <h2 class="subtitle is-5">To Top</h2>
-                <ul>
-                <div class="has-text-weight-light">
-                  {% for item in topping %}
-                    <li>{{ item }}</li>
-                  {% endfor %}
-                  </div>
-                </ul>
-              {% endif %}
+              
+              
+              
               <h2 class="subtitle is-4"><span class="icon"><i class="fas fa-list-check"></i></span> Method</h2>
                 <ol>
-                  {% for step in method %}
-                    <li class="mb-3">{{ step }}</li>
-                  {% endfor %}
+                  
+                    <li class="mb-3">Preheat oven to 150°C (350°F).</li>
+                  
+                    <li class="mb-3">Cream butter and sugar until light and fluffy.</li>
+                  
+                    <li class="mb-3">Mix in the sweetened condensed milk.</li>
+                  
+                    <li class="mb-3">Add chocolate chips, flour, and baking powder. Mix until combined.</li>
+                  
+                    <li class="mb-3">Roll dough into balls and press gently with a fork.</li>
+                  
+                    <li class="mb-3">Bake for 10 minutes, or until just golden.</li>
+                  
                 </ol>
             </div>
           </div>
@@ -153,3 +157,5 @@ layout: base.njk
   });
 </script>
 </div>
+</body>
+</html>

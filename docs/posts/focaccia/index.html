@@ -1,10 +1,22 @@
----
-layout: base.njk
----
-<div class="page-wrapper">
+<!doctype html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Focaccia Bread</title>
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link rel="stylesheet" href="/css/custom.css">
+
+  <!-- Font Awesome CDN -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div class="page-wrapper">
     <nav class="navbar" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
-            <a class="navbar-item" href="{{ '/' | url }}">
+            <a class="navbar-item" href="/">
                 <span class="icon is-large is-left has-text-success">
                     <i class="fas fa-2x fa-home"></i>
                 </span>
@@ -21,79 +33,100 @@ layout: base.njk
         <section class="section">
           <div class="container is-max-desktop p-6-desktop">
             <!-- Title -->
-            <h1 class="title">{{ title }}</h1>
+            <h1 class="title">Focaccia Bread</h1>
              <!-- Meta Info (Time, Servings, Tags) -->
             <div id="recipe-meta" class="columns is-mobile is-multiline is-variable is-1">
-              {% if time %}
-              <div class="column is-narrow">
-                <span class="icon"><i class="fas fa-clock"></i></span> 
-                <span>{{ time }}</span>
-              </div>
-              {% endif %}
-              {% if servings %}
-              <div class="column is-narrow">
-                <span class="icon"><i class="fas fa-user-friends"></i></span> 
-                <span>{{ servings }} servings</span>
-              </div>
-              {% endif %}
-              {% if tags %}
+              
+              
+              
               <div class="column is-full">
                 <div class="tags are-medium">
-                  {% for tag in tags %}
-                    {% if tag != "recipe" %}
-                      <span class="tag is-primary is-light">{{ tag[0] | upper }}{{ tag.slice(1) }}</span>
-                    {% endif %}
-                  {% endfor %}
+                  
+                    
+                  
+                    
+                      <span class="tag is-primary is-light">Baking</span>
+                    
+                  
+                    
+                      <span class="tag is-primary is-light">Dinner</span>
+                    
+                  
+                    
+                      <span class="tag is-primary is-light">Misc</span>
+                    
+                  
                 </div>
               </div>
-              {% endif %}
+              
             </div>
             <!-- Image -->
-            {% if imgFile %}
+            
             <figure class="image mb-5">
-              <img src="{{ ('/img/' + imgFile) | url }}" alt="Photo of {{ title }}">
+              <img src="/img/focaccia.jpg" alt="Photo of Focaccia Bread">
             </figure>
-            {% endif %}
+            
             <div class="content">
-            {% if source %}
-            <blockquote>{{ source }}</blockquote>
-            {% endif %}
+            
             <!-- Ingredients and Instructions -->
-              {% if ingredients %}
+              
               <h2 class="subtitle is-4"><span class="icon"><i class="fas fa-spoon"></i></span> Ingredients</h2>
                 <ul>
                 <div class="has-text-weight-light">
-                  {% for item in ingredients %}
-                    <li>{{ item }}</li>
-                  {% endfor %}
+                  
+                    <li>2 tsp yeast</li>
+                  
+                    <li>1 1/2 cups water</li>
+                  
+                    <li>1 tbsp sugar</li>
+                  
+                    <li>1 tsp salt</li>
+                  
+                    <li>1 tbsp olive oil</li>
+                  
+                    <li>3 cups (420g) high-grade white flour</li>
+                  
+                    <li>1 tsp dried oregano</li>
+                  
                   </div>
                 </ul>
-              {% endif %}
-              {% if icing %}
-              <h2 class="subtitle is-5">Icing</h2>
-                <ul>
-                <div class="has-text-weight-light">
-                  {% for item in icing %}
-                    <li>{{ item }}</li>
-                  {% endfor %}
-                  </div>
-                </ul>
-              {% endif %}
-              {% if topping %}
+              
+              
+              
               <h2 class="subtitle is-5">To Top</h2>
                 <ul>
                 <div class="has-text-weight-light">
-                  {% for item in topping %}
-                    <li>{{ item }}</li>
-                  {% endfor %}
+                  
+                    <li>1 tbsp olive oil</li>
+                  
+                    <li>Coarse rock or flaky salt</li>
+                  
+                    <li>Rosemary (optional)</li>
+                  
+                    <li>Sliced olives (optional)</li>
+                  
                   </div>
                 </ul>
-              {% endif %}
+              
               <h2 class="subtitle is-4"><span class="icon"><i class="fas fa-list-check"></i></span> Method</h2>
                 <ol>
-                  {% for step in method %}
-                    <li class="mb-3">{{ step }}</li>
-                  {% endfor %}
+                  
+                    <li class="mb-3">Combine all bread ingredients in a bowl and mix well.</li>
+                  
+                    <li class="mb-3">Knead on a flat surface for 3–5 minutes.</li>
+                  
+                    <li class="mb-3">Return dough to the bowl, coat with a little olive oil to prevent sticking, cover with a tea towel, and let rise in a warm place for 45–60 minutes.</li>
+                  
+                    <li class="mb-3">Once dough has doubled or significantly increased in size, knead again for 3–5 minutes.</li>
+                  
+                    <li class="mb-3">Tuck edges under to form a loaf shape. Place on lightly oiled baking paper and let rise again in a warm spot for 30–45 minutes.</li>
+                  
+                    <li class="mb-3">Preheat oven to 225°C.</li>
+                  
+                    <li class="mb-3">Optionally, top with olive oil, flaky salt, rosemary, and olives.</li>
+                  
+                    <li class="mb-3">Bake for 15 minutes or until golden brown on top and bottom.</li>
+                  
                 </ol>
             </div>
           </div>
@@ -153,3 +186,5 @@ layout: base.njk
   });
 </script>
 </div>
+</body>
+</html>

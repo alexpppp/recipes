@@ -1,10 +1,22 @@
----
-layout: base.njk
----
-<div class="page-wrapper">
+<!doctype html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>No Knead Bread</title>
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link rel="stylesheet" href="/css/custom.css">
+
+  <!-- Font Awesome CDN -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div class="page-wrapper">
     <nav class="navbar" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
-            <a class="navbar-item" href="{{ '/' | url }}">
+            <a class="navbar-item" href="/">
                 <span class="icon is-large is-left has-text-success">
                     <i class="fas fa-2x fa-home"></i>
                 </span>
@@ -21,79 +33,75 @@ layout: base.njk
         <section class="section">
           <div class="container is-max-desktop p-6-desktop">
             <!-- Title -->
-            <h1 class="title">{{ title }}</h1>
+            <h1 class="title">No Knead Bread</h1>
              <!-- Meta Info (Time, Servings, Tags) -->
             <div id="recipe-meta" class="columns is-mobile is-multiline is-variable is-1">
-              {% if time %}
-              <div class="column is-narrow">
-                <span class="icon"><i class="fas fa-clock"></i></span> 
-                <span>{{ time }}</span>
-              </div>
-              {% endif %}
-              {% if servings %}
-              <div class="column is-narrow">
-                <span class="icon"><i class="fas fa-user-friends"></i></span> 
-                <span>{{ servings }} servings</span>
-              </div>
-              {% endif %}
-              {% if tags %}
+              
+              
+              
               <div class="column is-full">
                 <div class="tags are-medium">
-                  {% for tag in tags %}
-                    {% if tag != "recipe" %}
-                      <span class="tag is-primary is-light">{{ tag[0] | upper }}{{ tag.slice(1) }}</span>
-                    {% endif %}
-                  {% endfor %}
+                  
+                    
+                  
+                    
+                      <span class="tag is-primary is-light">Baking</span>
+                    
+                  
                 </div>
               </div>
-              {% endif %}
+              
             </div>
             <!-- Image -->
-            {% if imgFile %}
+            
             <figure class="image mb-5">
-              <img src="{{ ('/img/' + imgFile) | url }}" alt="Photo of {{ title }}">
+              <img src="/img/no-knead-bread.jpeg" alt="Photo of No Knead Bread">
             </figure>
-            {% endif %}
+            
             <div class="content">
-            {% if source %}
-            <blockquote>{{ source }}</blockquote>
-            {% endif %}
+            
             <!-- Ingredients and Instructions -->
-              {% if ingredients %}
+              
               <h2 class="subtitle is-4"><span class="icon"><i class="fas fa-spoon"></i></span> Ingredients</h2>
                 <ul>
                 <div class="has-text-weight-light">
-                  {% for item in ingredients %}
-                    <li>{{ item }}</li>
-                  {% endfor %}
+                  
+                    <li>3 1/3 cups all-purpose or bread flour</li>
+                  
+                    <li>1/4 tsp instant yeast</li>
+                  
+                    <li>1 1/4 tsp salt</li>
+                  
+                    <li>1 1/2 cups lukewarm water</li>
+                  
                   </div>
                 </ul>
-              {% endif %}
-              {% if icing %}
-              <h2 class="subtitle is-5">Icing</h2>
-                <ul>
-                <div class="has-text-weight-light">
-                  {% for item in icing %}
-                    <li>{{ item }}</li>
-                  {% endfor %}
-                  </div>
-                </ul>
-              {% endif %}
-              {% if topping %}
-              <h2 class="subtitle is-5">To Top</h2>
-                <ul>
-                <div class="has-text-weight-light">
-                  {% for item in topping %}
-                    <li>{{ item }}</li>
-                  {% endfor %}
-                  </div>
-                </ul>
-              {% endif %}
+              
+              
+              
               <h2 class="subtitle is-4"><span class="icon"><i class="fas fa-list-check"></i></span> Method</h2>
                 <ol>
-                  {% for step in method %}
-                    <li class="mb-3">{{ step }}</li>
-                  {% endfor %}
+                  
+                    <li class="mb-3">In a large bowl, combine flour, yeast, and salt.</li>
+                  
+                    <li class="mb-3">Add lukewarm water and stir until blended. The dough will be shaggy and sticky.</li>
+                  
+                    <li class="mb-3">Cover the bowl with plastic wrap and let rest at room temperature (around 18°C) for at least 12 hours, preferably 18.</li>
+                  
+                    <li class="mb-3">The dough is ready when the surface is dotted with bubbles.</li>
+                  
+                    <li class="mb-3">Lightly flour a work surface and turn out the dough. Sprinkle with more flour and fold it over on itself twice. Let rest for 15 minutes.</li>
+                  
+                    <li class="mb-3">Shape dough into a ball using just enough flour to prevent sticking.</li>
+                  
+                    <li class="mb-3">Generously flour a tea towel, place dough seam side down, dust with more flour, and cover with another towel. Let rise for about 2 hours until doubled in size and it doesn&#39;t spring back when poked.</li>
+                  
+                    <li class="mb-3">30 minutes before the dough is ready, place a covered cast iron or ceramic pot into the oven and preheat to 230°C.</li>
+                  
+                    <li class="mb-3">When dough is ready, carefully remove the pot from the oven. Turn dough into the pot, seam side up.</li>
+                  
+                    <li class="mb-3">Cover and bake for 20 minutes, then remove the lid and bake for another 10–15 minutes until nicely browned.</li>
+                  
                 </ol>
             </div>
           </div>
@@ -153,3 +161,5 @@ layout: base.njk
   });
 </script>
 </div>
+</body>
+</html>

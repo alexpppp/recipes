@@ -1,10 +1,22 @@
----
-layout: base.njk
----
-<div class="page-wrapper">
+<!doctype html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Brownies</title>
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link rel="stylesheet" href="/css/custom.css">
+
+  <!-- Font Awesome CDN -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div class="page-wrapper">
     <nav class="navbar" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
-            <a class="navbar-item" href="{{ '/' | url }}">
+            <a class="navbar-item" href="/">
                 <span class="icon is-large is-left has-text-success">
                     <i class="fas fa-2x fa-home"></i>
                 </span>
@@ -21,79 +33,90 @@ layout: base.njk
         <section class="section">
           <div class="container is-max-desktop p-6-desktop">
             <!-- Title -->
-            <h1 class="title">{{ title }}</h1>
+            <h1 class="title">Brownies</h1>
              <!-- Meta Info (Time, Servings, Tags) -->
             <div id="recipe-meta" class="columns is-mobile is-multiline is-variable is-1">
-              {% if time %}
+              
               <div class="column is-narrow">
                 <span class="icon"><i class="fas fa-clock"></i></span> 
-                <span>{{ time }}</span>
+                <span>25–30 mins</span>
               </div>
-              {% endif %}
-              {% if servings %}
-              <div class="column is-narrow">
-                <span class="icon"><i class="fas fa-user-friends"></i></span> 
-                <span>{{ servings }} servings</span>
-              </div>
-              {% endif %}
-              {% if tags %}
+              
+              
+              
               <div class="column is-full">
                 <div class="tags are-medium">
-                  {% for tag in tags %}
-                    {% if tag != "recipe" %}
-                      <span class="tag is-primary is-light">{{ tag[0] | upper }}{{ tag.slice(1) }}</span>
-                    {% endif %}
-                  {% endfor %}
+                  
+                    
+                  
+                    
+                      <span class="tag is-primary is-light">Baking</span>
+                    
+                  
+                    
+                      <span class="tag is-primary is-light">Dessert</span>
+                    
+                  
                 </div>
               </div>
-              {% endif %}
+              
             </div>
             <!-- Image -->
-            {% if imgFile %}
+            
             <figure class="image mb-5">
-              <img src="{{ ('/img/' + imgFile) | url }}" alt="Photo of {{ title }}">
+              <img src="/img/brownies.jpg" alt="Photo of Brownies">
             </figure>
-            {% endif %}
+            
             <div class="content">
-            {% if source %}
-            <blockquote>{{ source }}</blockquote>
-            {% endif %}
+            
             <!-- Ingredients and Instructions -->
-              {% if ingredients %}
+              
               <h2 class="subtitle is-4"><span class="icon"><i class="fas fa-spoon"></i></span> Ingredients</h2>
                 <ul>
                 <div class="has-text-weight-light">
-                  {% for item in ingredients %}
-                    <li>{{ item }}</li>
-                  {% endfor %}
+                  
+                    <li>1 cup melted olivani</li>
+                  
+                    <li>3/4 cup cocoa</li>
+                  
+                    <li>2 cups sugar</li>
+                  
+                    <li>4 eggs</li>
+                  
+                    <li>2 tsp vanilla</li>
+                  
+                    <li>1 cup unsifted flour</li>
+                  
+                    <li>1/2 tsp salt</li>
+                  
+                    <li>1 cup (plus a little more) chocolate chunks – a combination of dark and white</li>
+                  
                   </div>
                 </ul>
-              {% endif %}
-              {% if icing %}
-              <h2 class="subtitle is-5">Icing</h2>
-                <ul>
-                <div class="has-text-weight-light">
-                  {% for item in icing %}
-                    <li>{{ item }}</li>
-                  {% endfor %}
-                  </div>
-                </ul>
-              {% endif %}
-              {% if topping %}
-              <h2 class="subtitle is-5">To Top</h2>
-                <ul>
-                <div class="has-text-weight-light">
-                  {% for item in topping %}
-                    <li>{{ item }}</li>
-                  {% endfor %}
-                  </div>
-                </ul>
-              {% endif %}
+              
+              
+              
               <h2 class="subtitle is-4"><span class="icon"><i class="fas fa-list-check"></i></span> Method</h2>
                 <ol>
-                  {% for step in method %}
-                    <li class="mb-3">{{ step }}</li>
-                  {% endfor %}
+                  
+                    <li class="mb-3">Preheat oven to 180°C.</li>
+                  
+                    <li class="mb-3">Grease a 13 x 9 inch baking dish.</li>
+                  
+                    <li class="mb-3">Add cocoa to melted olivani and stir until well blended.</li>
+                  
+                    <li class="mb-3">Add sugar and mix. Beat in eggs one at a time.</li>
+                  
+                    <li class="mb-3">Stir in vanilla, flour and salt. Do not overbeat.</li>
+                  
+                    <li class="mb-3">Stir in chocolate chunks and spread mixture evenly into dish.</li>
+                  
+                    <li class="mb-3">Bake for 25–30 minutes or until a wooden pick comes out clean.</li>
+                  
+                    <li class="mb-3">Allow to cool before serving.</li>
+                  
+                    <li class="mb-3">Serve with yoghurt or ice cream and berries.</li>
+                  
                 </ol>
             </div>
           </div>
@@ -153,3 +176,5 @@ layout: base.njk
   });
 </script>
 </div>
+</body>
+</html>
