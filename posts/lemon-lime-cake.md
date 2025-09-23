@@ -1,8 +1,8 @@
 ---
-title: Orange, Lemon & Lime Cake
+title: Lemon & Lime Cake
 source: From The Caker, by Jordan Rondel
 tags: ["baking"]
-imgFile: 'orange-lemon-and-lime-cake.jpg'
+imgFile: 'lemon-lime-cake.jpg'
 time: 25 mins
 servings: 12
 ingredients:
