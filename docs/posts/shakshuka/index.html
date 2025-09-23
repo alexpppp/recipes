@@ -1,0 +1,191 @@
+<!doctype html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Shakshuka</title>
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link rel="stylesheet" href="/css/custom.css">
+
+  <!-- Font Awesome CDN -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div class="page-wrapper">
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="/">
+                <span class="icon is-large is-left has-text-success">
+                    <i class="fas fa-2x fa-home"></i>
+                </span>
+            </a>
+            <div class="navbar-item">
+            <button id="wake-toggle" class="button is-small is-light">
+              <span class="icon"><i class="fas fa-moon"></i></span>
+              <span>Keep Awake</span>
+            </button>
+          </div>
+        </div>
+    </nav>
+    <main class="has-background-light">
+        <section class="section">
+          <div class="container is-max-desktop p-6-desktop">
+            <!-- Title -->
+            <h1 class="title">Shakshuka</h1>
+             <!-- Meta Info (Time, Servings, Tags) -->
+            <div id="recipe-meta" class="columns is-mobile is-multiline is-variable is-1">
+              
+              
+              
+              <div class="column is-full">
+                <div class="tags are-medium">
+                  
+                    
+                  
+                    
+                      <span class="tag is-primary is-light">Breakfast</span>
+                    
+                  
+                    
+                      <span class="tag is-primary is-light">Dinner</span>
+                    
+                  
+                </div>
+              </div>
+              
+            </div>
+            <!-- Image -->
+            
+            <figure class="image mb-5">
+              <img src="/img/shakshuka.jpg" alt="Photo of Shakshuka">
+            </figure>
+            
+            <div class="content">
+            
+            <!-- Ingredients and Instructions -->
+              
+              <h2 class="subtitle is-4"><span class="icon"><i class="fas fa-spoon"></i></span> Ingredients</h2>
+                <ul>
+                <div class="has-text-weight-light">
+                  
+                    <li>1 tbsp olive oil</li>
+                  
+                    <li>1/2 onion, peeled and diced</li>
+                  
+                    <li>1 clove garlic, minced</li>
+                  
+                    <li>1 capsicum, seeded and chopped</li>
+                  
+                    <li>4 cups ripe diced tomatoes (or 2 cans diced tomatoes)</li>
+                  
+                    <li>2 tbsp tomato paste</li>
+                  
+                    <li>1/2 tsp chilli powder</li>
+                  
+                    <li>1 tsp ground cumin</li>
+                  
+                    <li>1 tsp paprika</li>
+                  
+                    <li>Pinch of cayenne pepper</li>
+                  
+                    <li>1 tbsp brown sugar</li>
+                  
+                    <li>Salt and pepper, to taste</li>
+                  
+                    <li>6 eggs</li>
+                  
+                    <li>1/4 cup fresh chopped parsley and coriander</li>
+                  
+                    <li>Dukkah</li>
+                  
+                    <li>Sour cream, to serve</li>
+                  
+                  </div>
+                </ul>
+              
+              
+              
+              <h2 class="subtitle is-4"><span class="icon"><i class="fas fa-list-check"></i></span> Method</h2>
+                <ol>
+                  
+                    <li class="mb-3">Heat olive oil in a pan over medium heat.</li>
+                  
+                    <li class="mb-3">Add diced onion and cook until starting to soften.</li>
+                  
+                    <li class="mb-3">Add garlic and cook briefly until fragrant.</li>
+                  
+                    <li class="mb-3">Stir in chopped capsicum and sauté for around 5 minutes.</li>
+                  
+                    <li class="mb-3">Add tomatoes, tomato paste, spices, brown sugar, salt, and pepper.</li>
+                  
+                    <li class="mb-3">Simmer for 5 minutes to blend the flavours.</li>
+                  
+                    <li class="mb-3">Crack eggs into the sauce one at a time. Cover and cook for 5–10 minutes, depending on how runny you like your eggs.</li>
+                  
+                    <li class="mb-3">Garnish with chopped parsley, coriander, and a sprinkle of dukkah.</li>
+                  
+                    <li class="mb-3">Serve with a dollop of sour cream.</li>
+                  
+                </ol>
+            </div>
+          </div>
+        </section>
+      </main>
+      <script>
+  let wakeLock = null;
+  const wakeButton = document.getElementById('wake-toggle');
+  let wakeActive = false;
+  async function requestWakeLock() {
+    try {
+      wakeLock = await navigator.wakeLock.request('screen');
+      wakeActive = true;
+      updateButton(true);
+      wakeLock.addEventListener('release', () => {
+        wakeActive = false;
+        updateButton(false);
+        console.log('Wake Lock released');
+      });
+      console.log('Wake Lock active');
+    } catch (err) {
+      console.error(`Wake Lock error: ${err.name}, ${err.message}`);
+    }
+  }
+  function releaseWakeLock() {
+    if (wakeLock !== null) {
+      wakeLock.release();
+      wakeLock = null;
+    }
+  }
+  function updateButton(active) {
+    if (active) {
+      wakeButton.classList.add('is-success');
+      wakeButton.classList.remove('is-light');
+      wakeButton.querySelector('.icon i').classList.replace('fa-moon', 'fa-sun');
+      wakeButton.querySelector('span:nth-child(2)').textContent = 'Awake';
+    } else {
+      wakeButton.classList.remove('is-success');
+      wakeButton.classList.add('is-light');
+      wakeButton.querySelector('.icon i').classList.replace('fa-sun', 'fa-moon');
+      wakeButton.querySelector('span:nth-child(2)').textContent = 'Keep Awake';
+    }
+  }
+  // Re-acquire on visibility change
+  document.addEventListener('visibilitychange', () => {
+    if (wakeActive && document.visibilityState === 'visible') {
+      requestWakeLock();
+    }
+  });
+  // Toggle wake lock on button click
+  wakeButton.addEventListener('click', () => {
+    if (wakeActive) {
+      releaseWakeLock();
+    } else {
+      requestWakeLock();
+    }
+  });
+</script>
+</div>
+</body>
+</html>

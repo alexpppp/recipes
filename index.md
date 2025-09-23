@@ -15,9 +15,13 @@ layout: index-layout.njk
     <div class="block">
       <div id="tag-buttons" class="buttons has-addons">
         <button data-tag="all" class="button is-primary is-active">All</button>
-        <button data-tag="dessert" class="button is-primary">Dessert</button>
         <button data-tag="baking" class="button is-primary">Baking</button>
+        <button data-tag="breakfast" class="button is-primary">Breakfast</button>
         <button data-tag="dinner" class="button is-primary">Dinner</button>
+        <button data-tag="dessert" class="button is-primary">Dessert</button>
+        <button data-tag="misc" class="button is-primary">Misc</button>
+        <button data-tag="salad" class="button is-primary">Salad</button>
+        <button data-tag="snack" class="button is-primary">Snack</button>
       </div>
     </div>
   </div>

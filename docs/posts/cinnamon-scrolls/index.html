@@ -1,0 +1,204 @@
+<!doctype html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Celebration Cinnamon Scrolls</title>
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link rel="stylesheet" href="/css/custom.css">
+
+  <!-- Font Awesome CDN -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div class="page-wrapper">
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="/">
+                <span class="icon is-large is-left has-text-success">
+                    <i class="fas fa-2x fa-home"></i>
+                </span>
+            </a>
+            <div class="navbar-item">
+            <button id="wake-toggle" class="button is-small is-light">
+              <span class="icon"><i class="fas fa-moon"></i></span>
+              <span>Keep Awake</span>
+            </button>
+          </div>
+        </div>
+    </nav>
+    <main class="has-background-light">
+        <section class="section">
+          <div class="container is-max-desktop p-6-desktop">
+            <!-- Title -->
+            <h1 class="title">Celebration Cinnamon Scrolls</h1>
+             <!-- Meta Info (Time, Servings, Tags) -->
+            <div id="recipe-meta" class="columns is-mobile is-multiline is-variable is-1">
+              
+              
+              
+              <div class="column is-full">
+                <div class="tags are-medium">
+                  
+                    
+                  
+                    
+                      <span class="tag is-primary is-light">Baking</span>
+                    
+                  
+                    
+                      <span class="tag is-primary is-light">Breakfast</span>
+                    
+                  
+                    
+                      <span class="tag is-primary is-light">Dessert</span>
+                    
+                  
+                    
+                      <span class="tag is-primary is-light">Misc</span>
+                    
+                  
+                    
+                      <span class="tag is-primary is-light">Snack</span>
+                    
+                  
+                </div>
+              </div>
+              
+            </div>
+            <!-- Image -->
+            
+            <div class="content">
+            
+            <!-- Ingredients and Instructions -->
+              
+              <h2 class="subtitle is-4"><span class="icon"><i class="fas fa-spoon"></i></span> Ingredients</h2>
+                <ul>
+                <div class="has-text-weight-light">
+                  
+                    <li>400ml lukewarm milk</li>
+                  
+                    <li>1 tsp sugar</li>
+                  
+                    <li>3 tsp yeast</li>
+                  
+                    <li>5 cups flour</li>
+                  
+                    <li>125g butter, melted</li>
+                  
+                    <li>2 eggs, lightly beaten</li>
+                  
+                    <li>1/2 cup white or caster sugar</li>
+                  
+                  </div>
+                </ul>
+              
+              
+              <h2 class="subtitle is-5">Icing</h2>
+                <ul>
+                <div class="has-text-weight-light">
+                  
+                    <li>2 cups icing sugar</li>
+                  
+                    <li>2 tbsp cream cheese</li>
+                  
+                    <li>1 tsp vanilla essence</li>
+                  
+                  </div>
+                </ul>
+              
+              
+              <h2 class="subtitle is-4"><span class="icon"><i class="fas fa-list-check"></i></span> Method</h2>
+                <ol>
+                  
+                    <li class="mb-3">Warm the milk and mix in the 1 tsp sugar and yeast. Let it sit for about 10 minutes until foamy.</li>
+                  
+                    <li class="mb-3">In a large bowl, mix flour, salt, and white sugar. Whisk to remove any lumps.</li>
+                  
+                    <li class="mb-3">Once the yeast is activated, add it to the dry ingredients along with the eggs and melted butter.</li>
+                  
+                    <li class="mb-3">Mix to combine, then transfer to a floured bench. Sprinkle with flour and knead well.</li>
+                  
+                    <li class="mb-3">Return dough to a greased bowl, cover with plastic wrap, and let rise in a warm spot until doubled in size.</li>
+                  
+                    <li class="mb-3">(Optional) At this point, the dough can be refrigerated overnight to continue the next day.</li>
+                  
+                    <li class="mb-3">Once risen, tip dough onto a floured surface and roll into a rectangle approx. 24 x 10 inches.</li>
+                  
+                    <li class="mb-3">Spread with softened or melted butter, then sprinkle with brown sugar and cinnamon.</li>
+                  
+                    <li class="mb-3">Roll up into a log and cut into 2-inch-wide scrolls.</li>
+                  
+                    <li class="mb-3">Place on a lined tray, brush with milk, cover, and let rise again for about an hour.</li>
+                  
+                    <li class="mb-3">Preheat oven to 180°C (non-fan bake).</li>
+                  
+                    <li class="mb-3">Bake for 15–20 minutes until golden brown.</li>
+                  
+                    <li class="mb-3">Once cool, drizzle with icing made by combining icing sugar, cream cheese, and vanilla essence.</li>
+                  
+                    <li class="mb-3">Makes approximately 15 scrolls.</li>
+                  
+                </ol>
+            </div>
+          </div>
+        </section>
+      </main>
+      <script>
+  let wakeLock = null;
+  const wakeButton = document.getElementById('wake-toggle');
+  let wakeActive = false;
+  async function requestWakeLock() {
+    try {
+      wakeLock = await navigator.wakeLock.request('screen');
+      wakeActive = true;
+      updateButton(true);
+      wakeLock.addEventListener('release', () => {
+        wakeActive = false;
+        updateButton(false);
+        console.log('Wake Lock released');
+      });
+      console.log('Wake Lock active');
+    } catch (err) {
+      console.error(`Wake Lock error: ${err.name}, ${err.message}`);
+    }
+  }
+  function releaseWakeLock() {
+    if (wakeLock !== null) {
+      wakeLock.release();
+      wakeLock = null;
+    }
+  }
+  function updateButton(active) {
+    if (active) {
+      wakeButton.classList.add('is-success');
+      wakeButton.classList.remove('is-light');
+      wakeButton.querySelector('.icon i').classList.replace('fa-moon', 'fa-sun');
+      wakeButton.querySelector('span:nth-child(2)').textContent = 'Awake';
+    } else {
+      wakeButton.classList.remove('is-success');
+      wakeButton.classList.add('is-light');
+      wakeButton.querySelector('.icon i').classList.replace('fa-sun', 'fa-moon');
+      wakeButton.querySelector('span:nth-child(2)').textContent = 'Keep Awake';
+    }
+  }
+  // Re-acquire on visibility change
+  document.addEventListener('visibilitychange', () => {
+    if (wakeActive && document.visibilityState === 'visible') {
+      requestWakeLock();
+    }
+  });
+  // Toggle wake lock on button click
+  wakeButton.addEventListener('click', () => {
+    if (wakeActive) {
+      releaseWakeLock();
+    } else {
+      requestWakeLock();
+    }
+  });
+</script>
+</div>
+</body>
+</html>
