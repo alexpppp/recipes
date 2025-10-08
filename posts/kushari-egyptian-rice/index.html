@@ -1,0 +1,209 @@
+<!doctype html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Kushari (Egyptian Rice Dish)</title>
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link rel="stylesheet" href="/recipes/css/custom.css">
+
+  <!-- Font Awesome CDN -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div class="page-wrapper">
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="/recipes/">
+                <span class="icon is-large is-left has-text-success">
+                    <i class="fas fa-2x fa-home"></i>
+                </span>
+            </a>
+            <div class="navbar-item">
+            <button id="wake-toggle" class="button is-small is-light">
+              <span class="icon"><i class="fas fa-moon"></i></span>
+              <span>Keep Awake</span>
+            </button>
+          </div>
+        </div>
+    </nav>
+    <main class="has-background-light">
+        <section class="section">
+          <div class="container is-max-desktop p-6-desktop">
+            <!-- Title -->
+            <h1 class="title">Kushari (Egyptian Rice Dish)</h1>
+             <!-- Meta Info (Time, Servings, Tags) -->
+            <div id="recipe-meta" class="columns is-mobile is-multiline is-variable is-1">
+              
+              
+              
+              <div class="column is-full">
+                <div class="tags are-medium">
+                  
+                    
+                  
+                    
+                      <span class="tag is-primary is-light">Dinner</span>
+                    
+                  
+                </div>
+              </div>
+              
+            </div>
+            <!-- Image -->
+            
+            <figure class="image mb-5">
+              <img src="/recipes/img/kushari.jpg" alt="Photo of Kushari (Egyptian Rice Dish)">
+            </figure>
+            
+            <div class="content">
+            
+            <!-- Ingredients and Instructions -->
+              
+              <h2 class="subtitle is-4"><span class="icon"><i class="fas fa-spoon"></i></span> Ingredients</h2>
+                <ul>
+                <div class="has-text-weight-light">
+                  
+                    <li>RICE LENTILS</li>
+                  
+                    <li>1 cup basmati rice</li>
+                  
+                    <li>50g butter</li>
+                  
+                    <li>3 cups chicken or vegetable stock</li>
+                  
+                    <li>1½ tsp ground nutmeg</li>
+                  
+                    <li>2 tsp ground cinnamon</li>
+                  
+                    <li>1 tsp salt</li>
+                  
+                    <li>Ground black pepper to taste</li>
+                  
+                    <li>3 large onions</li>
+                  
+                    <li>1–2 tins brown lentils</li>
+                  
+                    <li>1 cup pistachios or almonds (optional)</li>
+                  
+                    <li>1 good handful fresh parsley, chopped (optional)</li>
+                  
+                    <li>1 good handful fresh coriander, chopped</li>
+                  
+                    <li>1 cup dried fruit (e.g. sultanas, raisins, chopped dates, apricots)</li>
+                  
+                    <li>1 tsp brown sugar</li>
+                  
+                    <li>TOMATO SAUCE</li>
+                  
+                    <li>¼ cup oil (preferably olive)</li>
+                  
+                    <li>3 cloves garlic, chopped</li>
+                  
+                    <li>1 tsp chilli paste</li>
+                  
+                    <li>1½ tsp ground cumin</li>
+                  
+                    <li>1 tsp paprika</li>
+                  
+                    <li>¼ cup cider vinegar (or white wine vinegar)</li>
+                  
+                    <li>400g tin chopped tomatoes</li>
+                  
+                    <li>1 tin of water (use the empty tomato can to measure)</li>
+                  
+                    <li>TO SERVE</li>
+                  
+                    <li>Sour cream or unsweetened yoghurt</li>
+                  
+                    <li>Fresh coriander</li>
+                  
+                  </div>
+                </ul>
+              
+              
+              
+              <h2 class="subtitle is-4"><span class="icon"><i class="fas fa-list-check"></i></span> Method</h2>
+                <ol>
+                  
+                    <li class="mb-3">Start by making the rice - Melt butter in a large pan and toast the rice, cinnamon, and nutmeg for a couple of minutes to release their aroma.</li>
+                  
+                    <li class="mb-3">Add the dried fruit, salt, pepper, and stock. Drain the lentils and stir them into the mix.</li>
+                  
+                    <li class="mb-3">Bring to a boil, then simmer for 12–14 minutes, stirring regularly.</li>
+                  
+                    <li class="mb-3">Remove from heat, cover with a lid, and steam for 12 minutes. If needed, add more water and return to heat until absorbed.</li>
+                  
+                    <li class="mb-3">For the onions - Slice thinly, sauté in oil with brown sugar until soft and caramelised. Stir into cooked rice and lentils.</li>
+                  
+                    <li class="mb-3">To make the tomato sauce - Sauté garlic and chilli paste in oil for 2 minutes. Add cumin and paprika, cook for another minute.</li>
+                  
+                    <li class="mb-3">Add vinegar and let boil for 1 minute, then add tomatoes and 1 tin of water. Simmer gently while rice finishes cooking.</li>
+                  
+                    <li class="mb-3">Stir chopped herbs and nuts into the rice.</li>
+                  
+                    <li class="mb-3">Serve in bowls - spoon rice mixture, top with tomato sauce, a dollop of sour cream or yoghurt, and garnish with coriander.</li>
+                  
+                </ol>
+            </div>
+          </div>
+        </section>
+      </main>
+      <script>
+  let wakeLock = null;
+  const wakeButton = document.getElementById('wake-toggle');
+  let wakeActive = false;
+  async function requestWakeLock() {
+    try {
+      wakeLock = await navigator.wakeLock.request('screen');
+      wakeActive = true;
+      updateButton(true);
+      wakeLock.addEventListener('release', () => {
+        wakeActive = false;
+        updateButton(false);
+        console.log('Wake Lock released');
+      });
+      console.log('Wake Lock active');
+    } catch (err) {
+      console.error(`Wake Lock error: ${err.name}, ${err.message}`);
+    }
+  }
+  function releaseWakeLock() {
+    if (wakeLock !== null) {
+      wakeLock.release();
+      wakeLock = null;
+    }
+  }
+  function updateButton(active) {
+    if (active) {
+      wakeButton.classList.add('is-success');
+      wakeButton.classList.remove('is-light');
+      wakeButton.querySelector('.icon i').classList.replace('fa-moon', 'fa-sun');
+      wakeButton.querySelector('span:nth-child(2)').textContent = 'Awake';
+    } else {
+      wakeButton.classList.remove('is-success');
+      wakeButton.classList.add('is-light');
+      wakeButton.querySelector('.icon i').classList.replace('fa-sun', 'fa-moon');
+      wakeButton.querySelector('span:nth-child(2)').textContent = 'Keep Awake';
+    }
+  }
+  // Re-acquire on visibility change
+  document.addEventListener('visibilitychange', () => {
+    if (wakeActive && document.visibilityState === 'visible') {
+      requestWakeLock();
+    }
+  });
+  // Toggle wake lock on button click
+  wakeButton.addEventListener('click', () => {
+    if (wakeActive) {
+      releaseWakeLock();
+    } else {
+      requestWakeLock();
+    }
+  });
+</script>
+</div>
+</body>
+</html>

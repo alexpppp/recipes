@@ -1,0 +1,197 @@
+<!doctype html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Dahl Makhani</title>
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link rel="stylesheet" href="/recipes/css/custom.css">
+
+  <!-- Font Awesome CDN -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div class="page-wrapper">
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="/recipes/">
+                <span class="icon is-large is-left has-text-success">
+                    <i class="fas fa-2x fa-home"></i>
+                </span>
+            </a>
+            <div class="navbar-item">
+            <button id="wake-toggle" class="button is-small is-light">
+              <span class="icon"><i class="fas fa-moon"></i></span>
+              <span>Keep Awake</span>
+            </button>
+          </div>
+        </div>
+    </nav>
+    <main class="has-background-light">
+        <section class="section">
+          <div class="container is-max-desktop p-6-desktop">
+            <!-- Title -->
+            <h1 class="title">Dahl Makhani</h1>
+             <!-- Meta Info (Time, Servings, Tags) -->
+            <div id="recipe-meta" class="columns is-mobile is-multiline is-variable is-1">
+              
+              
+              
+              <div class="column is-full">
+                <div class="tags are-medium">
+                  
+                    
+                  
+                    
+                      <span class="tag is-primary is-light">Dinner</span>
+                    
+                  
+                </div>
+              </div>
+              
+            </div>
+            <!-- Image -->
+            
+            <figure class="image mb-5">
+              <img src="/recipes/img/dahl-makhani.jpg" alt="Photo of Dahl Makhani">
+            </figure>
+            
+            <div class="content">
+            
+            <!-- Ingredients and Instructions -->
+              
+              <h2 class="subtitle is-4"><span class="icon"><i class="fas fa-spoon"></i></span> Ingredients</h2>
+                <ul>
+                <div class="has-text-weight-light">
+                  
+                    <li>1 can brown lentils</li>
+                  
+                    <li>1 can kidney beans</li>
+                  
+                    <li>1 medium onion, finely chopped</li>
+                  
+                    <li>1 green chili, chopped (optional)</li>
+                  
+                    <li>1 tsp grated ginger</li>
+                  
+                    <li>1 tsp crushed garlic</li>
+                  
+                    <li>1 can (400g) tomatoes, whizzed in a food processor</li>
+                  
+                    <li>½ tsp cumin seeds</li>
+                  
+                    <li>2–3 cloves</li>
+                  
+                    <li>2–3 cardamom pods</li>
+                  
+                    <li>1 cinnamon stick</li>
+                  
+                    <li>1 bay leaf</li>
+                  
+                    <li>½ tsp red chili powder</li>
+                  
+                    <li>½ tsp ground nutmeg</li>
+                  
+                    <li>1 cup vegetable stock</li>
+                  
+                    <li>Further water as required</li>
+                  
+                    <li>¼ to ⅓ cup low-fat cream or coconut cream</li>
+                  
+                    <li>3 tbsp butter or olivani</li>
+                  
+                    <li>Salt, to taste</li>
+                  
+                  </div>
+                </ul>
+              
+              
+              
+              <h2 class="subtitle is-4"><span class="icon"><i class="fas fa-list-check"></i></span> Method</h2>
+                <ol>
+                  
+                    <li class="mb-3">Heat butter or olivani in a large pan.</li>
+                  
+                    <li class="mb-3">Add cumin seeds, cloves, cardamom pods, cinnamon stick, and bay leaf. Sauté until aromatic.</li>
+                  
+                    <li class="mb-3">Add chopped onion and sauté until golden.</li>
+                  
+                    <li class="mb-3">Stir in ginger and garlic, cook until the raw smell disappears.</li>
+                  
+                    <li class="mb-3">Add green chili, stir for 1 minute.</li>
+                  
+                    <li class="mb-3">Add pureed tomatoes, red chili powder, and nutmeg. Stir well and cook on low heat until oil separates from the sides.</li>
+                  
+                    <li class="mb-3">Add lentils, kidney beans, vegetable stock, and extra water as needed. Stir well and bring to a gentle simmer.</li>
+                  
+                    <li class="mb-3">Simmer uncovered over low heat for ~25 minutes, stirring often to prevent sticking.</li>
+                  
+                    <li class="mb-3">Add salt to taste and continue to cook, adjusting consistency with more water if needed.</li>
+                  
+                    <li class="mb-3">Once thickened, stir in cream. Mix well and remove from heat.</li>
+                  
+                    <li class="mb-3">Serve with rice, couscous, or naan. Top with coconut yoghurt and coriander if desired.</li>
+                  
+                </ol>
+            </div>
+          </div>
+        </section>
+      </main>
+      <script>
+  let wakeLock = null;
+  const wakeButton = document.getElementById('wake-toggle');
+  let wakeActive = false;
+  async function requestWakeLock() {
+    try {
+      wakeLock = await navigator.wakeLock.request('screen');
+      wakeActive = true;
+      updateButton(true);
+      wakeLock.addEventListener('release', () => {
+        wakeActive = false;
+        updateButton(false);
+        console.log('Wake Lock released');
+      });
+      console.log('Wake Lock active');
+    } catch (err) {
+      console.error(`Wake Lock error: ${err.name}, ${err.message}`);
+    }
+  }
+  function releaseWakeLock() {
+    if (wakeLock !== null) {
+      wakeLock.release();
+      wakeLock = null;
+    }
+  }
+  function updateButton(active) {
+    if (active) {
+      wakeButton.classList.add('is-success');
+      wakeButton.classList.remove('is-light');
+      wakeButton.querySelector('.icon i').classList.replace('fa-moon', 'fa-sun');
+      wakeButton.querySelector('span:nth-child(2)').textContent = 'Awake';
+    } else {
+      wakeButton.classList.remove('is-success');
+      wakeButton.classList.add('is-light');
+      wakeButton.querySelector('.icon i').classList.replace('fa-sun', 'fa-moon');
+      wakeButton.querySelector('span:nth-child(2)').textContent = 'Keep Awake';
+    }
+  }
+  // Re-acquire on visibility change
+  document.addEventListener('visibilitychange', () => {
+    if (wakeActive && document.visibilityState === 'visible') {
+      requestWakeLock();
+    }
+  });
+  // Toggle wake lock on button click
+  wakeButton.addEventListener('click', () => {
+    if (wakeActive) {
+      releaseWakeLock();
+    } else {
+      requestWakeLock();
+    }
+  });
+</script>
+</div>
+</body>
+</html>
