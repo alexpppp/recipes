@@ -1,0 +1,171 @@
+<!doctype html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Tahlia’s Sticky Muesli Bars</title>
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link rel="stylesheet" href="/css/custom.css">
+
+  <!-- Font Awesome CDN -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div class="page-wrapper">
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="/">
+                <span class="icon is-large is-left has-text-success">
+                    <i class="fas fa-2x fa-home"></i>
+                </span>
+            </a>
+            <div class="navbar-item">
+            <button id="wake-toggle" class="button is-small is-light">
+              <span class="icon"><i class="fas fa-moon"></i></span>
+              <span>Keep Awake</span>
+            </button>
+          </div>
+        </div>
+    </nav>
+    <main class="has-background-light">
+        <section class="section">
+          <div class="container is-max-desktop p-6-desktop">
+            <!-- Title -->
+            <h1 class="title">Tahlia’s Sticky Muesli Bars</h1>
+             <!-- Meta Info (Time, Servings, Tags) -->
+            <div id="recipe-meta" class="columns is-mobile is-multiline is-variable is-1">
+              
+              
+              
+              <div class="column is-full">
+                <div class="tags are-medium">
+                  
+                    
+                  
+                    
+                      <span class="tag is-primary is-light">Baking</span>
+                    
+                  
+                    
+                      <span class="tag is-primary is-light">Snack</span>
+                    
+                  
+                </div>
+              </div>
+              
+            </div>
+            <!-- Image -->
+            
+            <div class="content">
+            
+            <!-- Ingredients and Instructions -->
+              
+              <h2 class="subtitle is-4"><span class="icon"><i class="fas fa-spoon"></i></span> Ingredients</h2>
+                <ul>
+                <div class="has-text-weight-light">
+                  
+                    <li>1 cup almonds</li>
+                  
+                    <li>1 cup peanuts</li>
+                  
+                    <li>1 cup cashews *(or use 3 cups of any mixed nuts)*</li>
+                  
+                    <li>1/4 cup pumpkin seeds</li>
+                  
+                    <li>1/4 cup sunflower seeds</li>
+                  
+                    <li>1/4 cup sesame seeds</li>
+                  
+                    <li>1/2 cup honey</li>
+                  
+                    <li>1/3 cup maple syrup</li>
+                  
+                    <li>1/4 tsp salt</li>
+                  
+                    <li>1 tsp vanilla extract</li>
+                  
+                  </div>
+                </ul>
+              
+              
+              
+              <h2 class="subtitle is-4"><span class="icon"><i class="fas fa-list-check"></i></span> Method</h2>
+                <ol>
+                  
+                    <li class="mb-3">Grease and line a 9×13 inch dish with baking paper, leaving overhang for easy removal. Brush lightly with coconut oil. Prepare a second sheet for the top.</li>
+                  
+                    <li class="mb-3">Preheat oven to 180°C. Spread nuts on a tray and roast lightly until fragrant.</li>
+                  
+                    <li class="mb-3">Add roasted nuts to a large bowl with all the seeds.</li>
+                  
+                    <li class="mb-3">In a saucepan, combine honey, maple syrup, and salt. Bring to the boil and continue boiling until the mixture reaches 260°F (hard ball stage), if using a candy thermometer.</li>
+                  
+                    <li class="mb-3">Stir in vanilla and immediately pour over the nut and seed mixture. Mix quickly to coat everything evenly.</li>
+                  
+                    <li class="mb-3">Transfer into the prepared dish, cover with the second sheet of paper, and press down firmly using a jar or glass to compact the mixture.</li>
+                  
+                    <li class="mb-3">Refrigerate until fully cooled and firm, then slice into bars.</li>
+                  
+                </ol>
+            </div>
+          </div>
+        </section>
+      </main>
+      <script>
+  let wakeLock = null;
+  const wakeButton = document.getElementById('wake-toggle');
+  let wakeActive = false;
+  async function requestWakeLock() {
+    try {
+      wakeLock = await navigator.wakeLock.request('screen');
+      wakeActive = true;
+      updateButton(true);
+      wakeLock.addEventListener('release', () => {
+        wakeActive = false;
+        updateButton(false);
+        console.log('Wake Lock released');
+      });
+      console.log('Wake Lock active');
+    } catch (err) {
+      console.error(`Wake Lock error: ${err.name}, ${err.message}`);
+    }
+  }
+  function releaseWakeLock() {
+    if (wakeLock !== null) {
+      wakeLock.release();
+      wakeLock = null;
+    }
+  }
+  function updateButton(active) {
+    if (active) {
+      wakeButton.classList.add('is-success');
+      wakeButton.classList.remove('is-light');
+      wakeButton.querySelector('.icon i').classList.replace('fa-moon', 'fa-sun');
+      wakeButton.querySelector('span:nth-child(2)').textContent = 'Awake';
+    } else {
+      wakeButton.classList.remove('is-success');
+      wakeButton.classList.add('is-light');
+      wakeButton.querySelector('.icon i').classList.replace('fa-sun', 'fa-moon');
+      wakeButton.querySelector('span:nth-child(2)').textContent = 'Keep Awake';
+    }
+  }
+  // Re-acquire on visibility change
+  document.addEventListener('visibilitychange', () => {
+    if (wakeActive && document.visibilityState === 'visible') {
+      requestWakeLock();
+    }
+  });
+  // Toggle wake lock on button click
+  wakeButton.addEventListener('click', () => {
+    if (wakeActive) {
+      releaseWakeLock();
+    } else {
+      requestWakeLock();
+    }
+  });
+</script>
+</div>
+</body>
+</html>

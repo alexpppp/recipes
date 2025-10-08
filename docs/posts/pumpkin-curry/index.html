@@ -1,0 +1,203 @@
+<!doctype html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Pumpkin Curry</title>
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link rel="stylesheet" href="/css/custom.css">
+
+  <!-- Font Awesome CDN -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div class="page-wrapper">
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="/">
+                <span class="icon is-large is-left has-text-success">
+                    <i class="fas fa-2x fa-home"></i>
+                </span>
+            </a>
+            <div class="navbar-item">
+            <button id="wake-toggle" class="button is-small is-light">
+              <span class="icon"><i class="fas fa-moon"></i></span>
+              <span>Keep Awake</span>
+            </button>
+          </div>
+        </div>
+    </nav>
+    <main class="has-background-light">
+        <section class="section">
+          <div class="container is-max-desktop p-6-desktop">
+            <!-- Title -->
+            <h1 class="title">Pumpkin Curry</h1>
+             <!-- Meta Info (Time, Servings, Tags) -->
+            <div id="recipe-meta" class="columns is-mobile is-multiline is-variable is-1">
+              
+              
+              
+              <div class="column is-full">
+                <div class="tags are-medium">
+                  
+                    
+                  
+                    
+                      <span class="tag is-primary is-light">Dinner</span>
+                    
+                  
+                </div>
+              </div>
+              
+            </div>
+            <!-- Image -->
+            
+            <figure class="image mb-5">
+              <img src="/img/pumpkin-curry.jpg" alt="Photo of Pumpkin Curry">
+            </figure>
+            
+            <div class="content">
+            
+            <!-- Ingredients and Instructions -->
+              
+              <h2 class="subtitle is-4"><span class="icon"><i class="fas fa-spoon"></i></span> Ingredients</h2>
+                <ul>
+                <div class="has-text-weight-light">
+                  
+                    <li>BASE</li>
+                  
+                    <li>1 1/2 tbsp oil</li>
+                  
+                    <li>2 medium onions, finely chopped</li>
+                  
+                    <li>2 tbsp minced fresh ginger</li>
+                  
+                    <li>2 tbsp minced garlic</li>
+                  
+                    <li>1 small red chilli (or 1/2 tsp chilli powder)</li>
+                  
+                    <li>3 tbsp yellow or red curry paste</li>
+                  
+                    <li>ADDITIONS</li>
+                  
+                    <li>3 1/2 cups pre-cooked cubed pumpkin or butternut squash</li>
+                  
+                    <li>1 can coconut cream</li>
+                  
+                    <li>2 tbsp maple syrup</li>
+                  
+                    <li>1 tsp ground turmeric</li>
+                  
+                    <li>1 pinch sea salt (~1/4 tsp)</li>
+                  
+                    <li>2 tbsp lemon juice (optional)</li>
+                  
+                    <li>FILLERS</li>
+                  
+                    <li>1 large red pepper, chopped into chunks</li>
+                  
+                    <li>1 cup chopped broccoli (or other green veg like zucchini, spinach, etc.)</li>
+                  
+                    <li>Pre-cooked lentils (optional)</li>
+                  
+                    <li>Pre-fried small chicken pieces (optional)</li>
+                  
+                    <li>TO SERVE</li>
+                  
+                    <li>Brown rice or quinoa</li>
+                  
+                    <li>2/3 cup roasted cashews</li>
+                  
+                    <li>Fresh coriander leaves</li>
+                  
+                    <li>Extra lemon juice</li>
+                  
+                  </div>
+                </ul>
+              
+              
+              
+              <h2 class="subtitle is-4"><span class="icon"><i class="fas fa-list-check"></i></span> Method</h2>
+                <ol>
+                  
+                    <li class="mb-3">In a large pot, heat oil and sauté onions, garlic, ginger, and chilli until fragrant and translucent.</li>
+                  
+                    <li class="mb-3">Stir in curry paste and cook for 2 minutes.</li>
+                  
+                    <li class="mb-3">Add the pre-cooked pumpkin and cook for a few more minutes.</li>
+                  
+                    <li class="mb-3">Transfer the mixture to a blender and purée until smooth.</li>
+                  
+                    <li class="mb-3">Return the purée to the pot. Add coconut cream, maple syrup, turmeric, sea salt, and optional lemon juice.</li>
+                  
+                    <li class="mb-3">Stir in the chopped veggies (except spinach, which should be added just 2 minutes before serving).</li>
+                  
+                    <li class="mb-3">Add lentils or chicken if using, and simmer for 15+ minutes.</li>
+                  
+                    <li class="mb-3">While simmering, cook rice or quinoa and toast cashews.</li>
+                  
+                    <li class="mb-3">Serve curry over rice or quinoa, topped with roasted cashews, coriander, and a squeeze of lemon juice.</li>
+                  
+                </ol>
+            </div>
+          </div>
+        </section>
+      </main>
+      <script>
+  let wakeLock = null;
+  const wakeButton = document.getElementById('wake-toggle');
+  let wakeActive = false;
+  async function requestWakeLock() {
+    try {
+      wakeLock = await navigator.wakeLock.request('screen');
+      wakeActive = true;
+      updateButton(true);
+      wakeLock.addEventListener('release', () => {
+        wakeActive = false;
+        updateButton(false);
+        console.log('Wake Lock released');
+      });
+      console.log('Wake Lock active');
+    } catch (err) {
+      console.error(`Wake Lock error: ${err.name}, ${err.message}`);
+    }
+  }
+  function releaseWakeLock() {
+    if (wakeLock !== null) {
+      wakeLock.release();
+      wakeLock = null;
+    }
+  }
+  function updateButton(active) {
+    if (active) {
+      wakeButton.classList.add('is-success');
+      wakeButton.classList.remove('is-light');
+      wakeButton.querySelector('.icon i').classList.replace('fa-moon', 'fa-sun');
+      wakeButton.querySelector('span:nth-child(2)').textContent = 'Awake';
+    } else {
+      wakeButton.classList.remove('is-success');
+      wakeButton.classList.add('is-light');
+      wakeButton.querySelector('.icon i').classList.replace('fa-sun', 'fa-moon');
+      wakeButton.querySelector('span:nth-child(2)').textContent = 'Keep Awake';
+    }
+  }
+  // Re-acquire on visibility change
+  document.addEventListener('visibilitychange', () => {
+    if (wakeActive && document.visibilityState === 'visible') {
+      requestWakeLock();
+    }
+  });
+  // Toggle wake lock on button click
+  wakeButton.addEventListener('click', () => {
+    if (wakeActive) {
+      releaseWakeLock();
+    } else {
+      requestWakeLock();
+    }
+  });
+</script>
+</div>
+</body>
+</html>

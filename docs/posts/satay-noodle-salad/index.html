@@ -1,0 +1,195 @@
+<!doctype html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Thai Satay Noodles</title>
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link rel="stylesheet" href="/css/custom.css">
+
+  <!-- Font Awesome CDN -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div class="page-wrapper">
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="/">
+                <span class="icon is-large is-left has-text-success">
+                    <i class="fas fa-2x fa-home"></i>
+                </span>
+            </a>
+            <div class="navbar-item">
+            <button id="wake-toggle" class="button is-small is-light">
+              <span class="icon"><i class="fas fa-moon"></i></span>
+              <span>Keep Awake</span>
+            </button>
+          </div>
+        </div>
+    </nav>
+    <main class="has-background-light">
+        <section class="section">
+          <div class="container is-max-desktop p-6-desktop">
+            <!-- Title -->
+            <h1 class="title">Thai Satay Noodles</h1>
+             <!-- Meta Info (Time, Servings, Tags) -->
+            <div id="recipe-meta" class="columns is-mobile is-multiline is-variable is-1">
+              
+              
+              
+              <div class="column is-full">
+                <div class="tags are-medium">
+                  
+                    
+                  
+                    
+                      <span class="tag is-primary is-light">Dinner</span>
+                    
+                  
+                </div>
+              </div>
+              
+            </div>
+            <!-- Image -->
+            
+            <figure class="image mb-5">
+              <img src="/img/satay-noodle-salad.jpg" alt="Photo of Thai Satay Noodles">
+            </figure>
+            
+            <div class="content">
+            
+            <blockquote>Revive – handwritten brown cookbook</blockquote>
+            
+            <!-- Ingredients and Instructions -->
+              
+              <h2 class="subtitle is-4"><span class="icon"><i class="fas fa-spoon"></i></span> Ingredients</h2>
+                <ul>
+                <div class="has-text-weight-light">
+                  
+                    <li>NOODLES &amp; VEGGIES</li>
+                  
+                    <li>Kumara, roasted</li>
+                  
+                    <li>Spring onions, chopped</li>
+                  
+                    <li>Capsicum, chopped</li>
+                  
+                    <li>Noodles, boiled</li>
+                  
+                    <li>SATAY SAUCE</li>
+                  
+                    <li>1 large onion, finely chopped</li>
+                  
+                    <li>2 tbsp fresh ginger, grated</li>
+                  
+                    <li>2 cloves garlic, minced</li>
+                  
+                    <li>2 tbsp rice bran oil</li>
+                  
+                    <li>2 tsp ground cumin</li>
+                  
+                    <li>1 tsp turmeric</li>
+                  
+                    <li>1 tsp ground coriander</li>
+                  
+                    <li>1 cup peanut butter</li>
+                  
+                    <li>2 cups hot water</li>
+                  
+                    <li>1/4 cup date purée *(or 4 tbsp honey)*</li>
+                  
+                    <li>1/4 tsp salt</li>
+                  
+                    <li>1/4 tsp crushed chilli *(optional)*</li>
+                  
+                  </div>
+                </ul>
+              
+              
+              
+              <h2 class="subtitle is-4"><span class="icon"><i class="fas fa-list-check"></i></span> Method</h2>
+                <ol>
+                  
+                    <li class="mb-3">Roast kumara until golden and tender. Set aside.</li>
+                  
+                    <li class="mb-3">Boil noodles according to packet instructions. Drain and set aside.</li>
+                  
+                    <li class="mb-3">Chop spring onions and capsicum and prepare remaining vegetables.</li>
+                  
+                    <li class="mb-3">To make satay sauce, sauté onion, ginger and garlic in rice bran oil until soft and fragrant.</li>
+                  
+                    <li class="mb-3">Add cumin, turmeric, and coriander. Stir for a minute until aromatic.</li>
+                  
+                    <li class="mb-3">Stir in peanut butter and hot water, mixing until smooth.</li>
+                  
+                    <li class="mb-3">Add date purée (or honey), salt, and optional chilli. Simmer for a few minutes to thicken.</li>
+                  
+                    <li class="mb-3">Combine noodles, roast kumara and chopped veg in a large bowl.</li>
+                  
+                    <li class="mb-3">Pour over warm satay sauce and toss to coat evenly.</li>
+                  
+                    <li class="mb-3">Serve hot, optionally topped with crushed peanuts or fresh herbs.</li>
+                  
+                </ol>
+            </div>
+          </div>
+        </section>
+      </main>
+      <script>
+  let wakeLock = null;
+  const wakeButton = document.getElementById('wake-toggle');
+  let wakeActive = false;
+  async function requestWakeLock() {
+    try {
+      wakeLock = await navigator.wakeLock.request('screen');
+      wakeActive = true;
+      updateButton(true);
+      wakeLock.addEventListener('release', () => {
+        wakeActive = false;
+        updateButton(false);
+        console.log('Wake Lock released');
+      });
+      console.log('Wake Lock active');
+    } catch (err) {
+      console.error(`Wake Lock error: ${err.name}, ${err.message}`);
+    }
+  }
+  function releaseWakeLock() {
+    if (wakeLock !== null) {
+      wakeLock.release();
+      wakeLock = null;
+    }
+  }
+  function updateButton(active) {
+    if (active) {
+      wakeButton.classList.add('is-success');
+      wakeButton.classList.remove('is-light');
+      wakeButton.querySelector('.icon i').classList.replace('fa-moon', 'fa-sun');
+      wakeButton.querySelector('span:nth-child(2)').textContent = 'Awake';
+    } else {
+      wakeButton.classList.remove('is-success');
+      wakeButton.classList.add('is-light');
+      wakeButton.querySelector('.icon i').classList.replace('fa-sun', 'fa-moon');
+      wakeButton.querySelector('span:nth-child(2)').textContent = 'Keep Awake';
+    }
+  }
+  // Re-acquire on visibility change
+  document.addEventListener('visibilitychange', () => {
+    if (wakeActive && document.visibilityState === 'visible') {
+      requestWakeLock();
+    }
+  });
+  // Toggle wake lock on button click
+  wakeButton.addEventListener('click', () => {
+    if (wakeActive) {
+      releaseWakeLock();
+    } else {
+      requestWakeLock();
+    }
+  });
+</script>
+</div>
+</body>
+</html>

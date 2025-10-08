@@ -1,0 +1,163 @@
+<!doctype html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Satay Fried Rice</title>
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link rel="stylesheet" href="/css/custom.css">
+
+  <!-- Font Awesome CDN -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div class="page-wrapper">
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="/">
+                <span class="icon is-large is-left has-text-success">
+                    <i class="fas fa-2x fa-home"></i>
+                </span>
+            </a>
+            <div class="navbar-item">
+            <button id="wake-toggle" class="button is-small is-light">
+              <span class="icon"><i class="fas fa-moon"></i></span>
+              <span>Keep Awake</span>
+            </button>
+          </div>
+        </div>
+    </nav>
+    <main class="has-background-light">
+        <section class="section">
+          <div class="container is-max-desktop p-6-desktop">
+            <!-- Title -->
+            <h1 class="title">Satay Fried Rice</h1>
+             <!-- Meta Info (Time, Servings, Tags) -->
+            <div id="recipe-meta" class="columns is-mobile is-multiline is-variable is-1">
+              
+              
+              
+              <div class="column is-full">
+                <div class="tags are-medium">
+                  
+                    
+                  
+                    
+                      <span class="tag is-primary is-light">Dinner</span>
+                    
+                  
+                </div>
+              </div>
+              
+            </div>
+            <!-- Image -->
+            
+            <figure class="image mb-5">
+              <img src="/img/satay-fried-rice.jpg" alt="Photo of Satay Fried Rice">
+            </figure>
+            
+            <div class="content">
+            
+            <!-- Ingredients and Instructions -->
+              
+              <h2 class="subtitle is-4"><span class="icon"><i class="fas fa-spoon"></i></span> Ingredients</h2>
+                <ul>
+                <div class="has-text-weight-light">
+                  
+                    <li>1 egg, cooked thinly (like an omelette), then sliced</li>
+                  
+                    <li>2–3 cups pre-cooked rice (ideally day-old)</li>
+                  
+                    <li>1–2 tbsp peanut butter</li>
+                  
+                    <li>1–2 tbsp soy sauce</li>
+                  
+                    <li>1 tsp maple syrup (or to taste)</li>
+                  
+                    <li>Chilli (fresh, flakes, or paste – to taste)</li>
+                  
+                    <li>Juice of 1 lime</li>
+                  
+                  </div>
+                </ul>
+              
+              
+              
+              <h2 class="subtitle is-4"><span class="icon"><i class="fas fa-list-check"></i></span> Method</h2>
+                <ol>
+                  
+                    <li class="mb-3">Heat a little oil in a large frying pan or wok.</li>
+                  
+                    <li class="mb-3">Add pre-cooked rice and stir-fry for a few minutes until heated through and starting to crisp.</li>
+                  
+                    <li class="mb-3">Stir in peanut butter, soy sauce, maple syrup, and chilli. Mix until everything is evenly coated and fragrant.</li>
+                  
+                    <li class="mb-3">Add the thinly sliced egg and stir through.</li>
+                  
+                    <li class="mb-3">Finish with a good squeeze of lime juice just before serving.</li>
+                  
+                    <li class="mb-3">[object Object]</li>
+                  
+                </ol>
+            </div>
+          </div>
+        </section>
+      </main>
+      <script>
+  let wakeLock = null;
+  const wakeButton = document.getElementById('wake-toggle');
+  let wakeActive = false;
+  async function requestWakeLock() {
+    try {
+      wakeLock = await navigator.wakeLock.request('screen');
+      wakeActive = true;
+      updateButton(true);
+      wakeLock.addEventListener('release', () => {
+        wakeActive = false;
+        updateButton(false);
+        console.log('Wake Lock released');
+      });
+      console.log('Wake Lock active');
+    } catch (err) {
+      console.error(`Wake Lock error: ${err.name}, ${err.message}`);
+    }
+  }
+  function releaseWakeLock() {
+    if (wakeLock !== null) {
+      wakeLock.release();
+      wakeLock = null;
+    }
+  }
+  function updateButton(active) {
+    if (active) {
+      wakeButton.classList.add('is-success');
+      wakeButton.classList.remove('is-light');
+      wakeButton.querySelector('.icon i').classList.replace('fa-moon', 'fa-sun');
+      wakeButton.querySelector('span:nth-child(2)').textContent = 'Awake';
+    } else {
+      wakeButton.classList.remove('is-success');
+      wakeButton.classList.add('is-light');
+      wakeButton.querySelector('.icon i').classList.replace('fa-sun', 'fa-moon');
+      wakeButton.querySelector('span:nth-child(2)').textContent = 'Keep Awake';
+    }
+  }
+  // Re-acquire on visibility change
+  document.addEventListener('visibilitychange', () => {
+    if (wakeActive && document.visibilityState === 'visible') {
+      requestWakeLock();
+    }
+  });
+  // Toggle wake lock on button click
+  wakeButton.addEventListener('click', () => {
+    if (wakeActive) {
+      releaseWakeLock();
+    } else {
+      requestWakeLock();
+    }
+  });
+</script>
+</div>
+</body>
+</html>

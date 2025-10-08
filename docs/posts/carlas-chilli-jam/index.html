@@ -1,0 +1,165 @@
+<!doctype html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Carla’s Chilli Jam</title>
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link rel="stylesheet" href="/css/custom.css">
+
+  <!-- Font Awesome CDN -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div class="page-wrapper">
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="/">
+                <span class="icon is-large is-left has-text-success">
+                    <i class="fas fa-2x fa-home"></i>
+                </span>
+            </a>
+            <div class="navbar-item">
+            <button id="wake-toggle" class="button is-small is-light">
+              <span class="icon"><i class="fas fa-moon"></i></span>
+              <span>Keep Awake</span>
+            </button>
+          </div>
+        </div>
+    </nav>
+    <main class="has-background-light">
+        <section class="section">
+          <div class="container is-max-desktop p-6-desktop">
+            <!-- Title -->
+            <h1 class="title">Carla’s Chilli Jam</h1>
+             <!-- Meta Info (Time, Servings, Tags) -->
+            <div id="recipe-meta" class="columns is-mobile is-multiline is-variable is-1">
+              
+              
+              
+              <div class="column is-full">
+                <div class="tags are-medium">
+                  
+                    
+                  
+                    
+                      <span class="tag is-primary is-light">Misc</span>
+                    
+                  
+                    
+                      <span class="tag is-primary is-light">Snack</span>
+                    
+                  
+                </div>
+              </div>
+              
+            </div>
+            <!-- Image -->
+            
+            <div class="content">
+            
+            <!-- Ingredients and Instructions -->
+              
+              <h2 class="subtitle is-4"><span class="icon"><i class="fas fa-spoon"></i></span> Ingredients</h2>
+                <ul>
+                <div class="has-text-weight-light">
+                  
+                    <li>500g tomatoes</li>
+                  
+                    <li>4–8 chillies (depending on size and heat preference)</li>
+                  
+                    <li>4 cloves garlic, peeled and roughly chopped</li>
+                  
+                    <li>6cm piece of ginger, peeled and roughly chopped</li>
+                  
+                    <li>30ml fish sauce</li>
+                  
+                    <li>300g sugar</li>
+                  
+                    <li>100ml red wine vinegar</li>
+                  
+                  </div>
+                </ul>
+              
+              
+              
+              <h2 class="subtitle is-4"><span class="icon"><i class="fas fa-list-check"></i></span> Method</h2>
+                <ol>
+                  
+                    <li class="mb-3">Place half the tomatoes in a blender with the chillies, garlic, ginger, and fish sauce. Blitz until smooth.</li>
+                  
+                    <li class="mb-3">Finely dice the remaining chillies.</li>
+                  
+                    <li class="mb-3">Transfer the purée to a saucepan and add sugar and vinegar. Stir continuously and bring to a boil.</li>
+                  
+                    <li class="mb-3">Once boiling, reduce to a simmer and add the remaining tomatoes.</li>
+                  
+                    <li class="mb-3">Simmer gently for 30–40 minutes, stirring frequently and scraping down the sides to prevent sticking or burning.</li>
+                  
+                    <li class="mb-3">Meanwhile, sterilise jars in the oven at 100°C for 30 minutes. Boil the lids for the final 5 minutes.</li>
+                  
+                    <li class="mb-3">Once the jam has thickened and reached setting point (sticky consistency), pour into the hot sterilised jars and seal.</li>
+                  
+                </ol>
+            </div>
+          </div>
+        </section>
+      </main>
+      <script>
+  let wakeLock = null;
+  const wakeButton = document.getElementById('wake-toggle');
+  let wakeActive = false;
+  async function requestWakeLock() {
+    try {
+      wakeLock = await navigator.wakeLock.request('screen');
+      wakeActive = true;
+      updateButton(true);
+      wakeLock.addEventListener('release', () => {
+        wakeActive = false;
+        updateButton(false);
+        console.log('Wake Lock released');
+      });
+      console.log('Wake Lock active');
+    } catch (err) {
+      console.error(`Wake Lock error: ${err.name}, ${err.message}`);
+    }
+  }
+  function releaseWakeLock() {
+    if (wakeLock !== null) {
+      wakeLock.release();
+      wakeLock = null;
+    }
+  }
+  function updateButton(active) {
+    if (active) {
+      wakeButton.classList.add('is-success');
+      wakeButton.classList.remove('is-light');
+      wakeButton.querySelector('.icon i').classList.replace('fa-moon', 'fa-sun');
+      wakeButton.querySelector('span:nth-child(2)').textContent = 'Awake';
+    } else {
+      wakeButton.classList.remove('is-success');
+      wakeButton.classList.add('is-light');
+      wakeButton.querySelector('.icon i').classList.replace('fa-sun', 'fa-moon');
+      wakeButton.querySelector('span:nth-child(2)').textContent = 'Keep Awake';
+    }
+  }
+  // Re-acquire on visibility change
+  document.addEventListener('visibilitychange', () => {
+    if (wakeActive && document.visibilityState === 'visible') {
+      requestWakeLock();
+    }
+  });
+  // Toggle wake lock on button click
+  wakeButton.addEventListener('click', () => {
+    if (wakeActive) {
+      releaseWakeLock();
+    } else {
+      requestWakeLock();
+    }
+  });
+</script>
+</div>
+</body>
+</html>

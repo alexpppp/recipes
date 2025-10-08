@@ -1,0 +1,179 @@
+<!doctype html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Tomato Relish</title>
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link rel="stylesheet" href="/css/custom.css">
+
+  <!-- Font Awesome CDN -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div class="page-wrapper">
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="/">
+                <span class="icon is-large is-left has-text-success">
+                    <i class="fas fa-2x fa-home"></i>
+                </span>
+            </a>
+            <div class="navbar-item">
+            <button id="wake-toggle" class="button is-small is-light">
+              <span class="icon"><i class="fas fa-moon"></i></span>
+              <span>Keep Awake</span>
+            </button>
+          </div>
+        </div>
+    </nav>
+    <main class="has-background-light">
+        <section class="section">
+          <div class="container is-max-desktop p-6-desktop">
+            <!-- Title -->
+            <h1 class="title">Tomato Relish</h1>
+             <!-- Meta Info (Time, Servings, Tags) -->
+            <div id="recipe-meta" class="columns is-mobile is-multiline is-variable is-1">
+              
+              
+              
+              <div class="column is-full">
+                <div class="tags are-medium">
+                  
+                    
+                  
+                    
+                      <span class="tag is-primary is-light">Misc</span>
+                    
+                  
+                </div>
+              </div>
+              
+            </div>
+            <!-- Image -->
+            
+            <figure class="image mb-5">
+              <img src="/img/relish.jpeg" alt="Photo of Tomato Relish">
+            </figure>
+            
+            <div class="content">
+            
+            <blockquote>Kathy’s Nana Lamb’s Recipe</blockquote>
+            
+            <!-- Ingredients and Instructions -->
+              
+              <h2 class="subtitle is-4"><span class="icon"><i class="fas fa-spoon"></i></span> Ingredients</h2>
+                <ul>
+                <div class="has-text-weight-light">
+                  
+                    <li>12 large ripe tomatoes</li>
+                  
+                    <li>4 medium onions</li>
+                  
+                    <li>Handful of salt (a “woman’s handful”)</li>
+                  
+                    <li>Malt vinegar (enough to cover)</li>
+                  
+                    <li>1 tbsp curry powder</li>
+                  
+                    <li>1/2 tbsp mustard powder</li>
+                  
+                    <li>5–6 chillies (or 1/2 tsp cayenne pepper)</li>
+                  
+                    <li>3 cups sugar</li>
+                  
+                    <li>Pinch of ground ginger</li>
+                  
+                    <li>Pinch of ground cloves</li>
+                  
+                  </div>
+                </ul>
+              
+              
+              
+              <h2 class="subtitle is-4"><span class="icon"><i class="fas fa-list-check"></i></span> Method</h2>
+                <ol>
+                  
+                    <li class="mb-3">Chop tomatoes and onions, then place in a bowl with the salt. Cover and leave for 12 hours.</li>
+                  
+                    <li class="mb-3">After 12 hours, pour off the liquid and cover the mixture with malt vinegar.</li>
+                  
+                    <li class="mb-3">Sterilise glass jars in the oven at 100°C for 30 minutes. Wash jars first in hot soapy water and rinse well.</li>
+                  
+                    <li class="mb-3">Bring the tomato and onion mixture to a boil and boil for 5 minutes.</li>
+                  
+                    <li class="mb-3">In a small bowl, mix curry powder, mustard powder, chillies (or cayenne), ginger, and cloves with a little vinegar to form a runny paste.</li>
+                  
+                    <li class="mb-3">Add the spice paste and sugar to the pot and boil gently for 45 minutes to 1 hour, stirring occasionally.</li>
+                  
+                    <li class="mb-3">Meanwhile, boil the jar lids in water for a couple of minutes.</li>
+                  
+                    <li class="mb-3">When the relish is ready and thickened, pour into hot sterilised jars and seal immediately with boiled lids.</li>
+                  
+                    <li class="mb-3">Let jars cool. Check that a vacuum seal has formed. If not, store in the fridge and consume within a few months.</li>
+                  
+                    <li class="mb-3">Properly sealed jars will last 1–2 years in a cool, dark place.</li>
+                  
+                </ol>
+            </div>
+          </div>
+        </section>
+      </main>
+      <script>
+  let wakeLock = null;
+  const wakeButton = document.getElementById('wake-toggle');
+  let wakeActive = false;
+  async function requestWakeLock() {
+    try {
+      wakeLock = await navigator.wakeLock.request('screen');
+      wakeActive = true;
+      updateButton(true);
+      wakeLock.addEventListener('release', () => {
+        wakeActive = false;
+        updateButton(false);
+        console.log('Wake Lock released');
+      });
+      console.log('Wake Lock active');
+    } catch (err) {
+      console.error(`Wake Lock error: ${err.name}, ${err.message}`);
+    }
+  }
+  function releaseWakeLock() {
+    if (wakeLock !== null) {
+      wakeLock.release();
+      wakeLock = null;
+    }
+  }
+  function updateButton(active) {
+    if (active) {
+      wakeButton.classList.add('is-success');
+      wakeButton.classList.remove('is-light');
+      wakeButton.querySelector('.icon i').classList.replace('fa-moon', 'fa-sun');
+      wakeButton.querySelector('span:nth-child(2)').textContent = 'Awake';
+    } else {
+      wakeButton.classList.remove('is-success');
+      wakeButton.classList.add('is-light');
+      wakeButton.querySelector('.icon i').classList.replace('fa-sun', 'fa-moon');
+      wakeButton.querySelector('span:nth-child(2)').textContent = 'Keep Awake';
+    }
+  }
+  // Re-acquire on visibility change
+  document.addEventListener('visibilitychange', () => {
+    if (wakeActive && document.visibilityState === 'visible') {
+      requestWakeLock();
+    }
+  });
+  // Toggle wake lock on button click
+  wakeButton.addEventListener('click', () => {
+    if (wakeActive) {
+      releaseWakeLock();
+    } else {
+      requestWakeLock();
+    }
+  });
+</script>
+</div>
+</body>
+</html>

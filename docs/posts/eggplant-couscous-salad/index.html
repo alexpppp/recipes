@@ -1,0 +1,192 @@
+<!doctype html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Eggplant Couscous Salad</title>
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link rel="stylesheet" href="/css/custom.css">
+
+  <!-- Font Awesome CDN -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div class="page-wrapper">
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="/">
+                <span class="icon is-large is-left has-text-success">
+                    <i class="fas fa-2x fa-home"></i>
+                </span>
+            </a>
+            <div class="navbar-item">
+            <button id="wake-toggle" class="button is-small is-light">
+              <span class="icon"><i class="fas fa-moon"></i></span>
+              <span>Keep Awake</span>
+            </button>
+          </div>
+        </div>
+    </nav>
+    <main class="has-background-light">
+        <section class="section">
+          <div class="container is-max-desktop p-6-desktop">
+            <!-- Title -->
+            <h1 class="title">Eggplant Couscous Salad</h1>
+             <!-- Meta Info (Time, Servings, Tags) -->
+            <div id="recipe-meta" class="columns is-mobile is-multiline is-variable is-1">
+              
+              
+              
+              <div class="column is-full">
+                <div class="tags are-medium">
+                  
+                    
+                  
+                    
+                      <span class="tag is-primary is-light">Dinner</span>
+                    
+                  
+                    
+                      <span class="tag is-primary is-light">Salad</span>
+                    
+                  
+                </div>
+              </div>
+              
+            </div>
+            <!-- Image -->
+            
+            <div class="content">
+            
+            <!-- Ingredients and Instructions -->
+              
+              <h2 class="subtitle is-4"><span class="icon"><i class="fas fa-spoon"></i></span> Ingredients</h2>
+                <ul>
+                <div class="has-text-weight-light">
+                  
+                    <li>2 eggplants, cut into 1.5cm rounds</li>
+                  
+                    <li>1 cup couscous</li>
+                  
+                    <li>1 cup boiling water</li>
+                  
+                    <li>1/4 cup currants</li>
+                  
+                    <li>1 tsp ground cumin</li>
+                  
+                    <li>1 tbsp olive oil</li>
+                  
+                    <li>Baby spinach (a few handfuls)</li>
+                  
+                    <li>DRESSING</li>
+                  
+                    <li>1 cup Greek yoghurt</li>
+                  
+                    <li>2 tbsp olive oil</li>
+                  
+                    <li>Zest of 1 lemon</li>
+                  
+                    <li>1 tbsp lemon juice</li>
+                  
+                    <li>1 tbsp tahini</li>
+                  
+                    <li>1 tsp Dijon mustard</li>
+                  
+                    <li>2 cloves garlic, crushed</li>
+                  
+                  </div>
+                </ul>
+              
+              
+              
+              <h2 class="subtitle is-5">To Top</h2>
+                <ul>
+                <div class="has-text-weight-light">
+                  
+                    <li>125g fresh burrata, drained (or substitute with mozzarella or feta, or omit)</li>
+                  
+                    <li>1/4 cup pistachios, roughly chopped</li>
+                  
+                    <li>1/4 cup fresh mint, chopped</li>
+                  
+                    <li>Chilli flakes</li>
+                  
+                  </div>
+                </ul>
+              
+              <h2 class="subtitle is-4"><span class="icon"><i class="fas fa-list-check"></i></span> Method</h2>
+                <ol>
+                  
+                    <li class="mb-3">Preheat oven to 180°C fan bake.</li>
+                  
+                    <li class="mb-3">Brush eggplant slices with olive oil on both sides, season with salt and pepper, and place on a lined baking tray. Roast for about 25 minutes, until tender but not falling apart.</li>
+                  
+                    <li class="mb-3">In a bowl, combine couscous, boiling water, currants, cumin, olive oil, and 1 tsp salt. Cover and set aside for 10 minutes. Fluff with a fork and stir through baby spinach.</li>
+                  
+                    <li class="mb-3">Blitz all dressing ingredients together until smooth.</li>
+                  
+                    <li class="mb-3">To assemble, spread dressing on the base of a platter, then layer couscous, roasted eggplant, and toppings.</li>
+                  
+                </ol>
+            </div>
+          </div>
+        </section>
+      </main>
+      <script>
+  let wakeLock = null;
+  const wakeButton = document.getElementById('wake-toggle');
+  let wakeActive = false;
+  async function requestWakeLock() {
+    try {
+      wakeLock = await navigator.wakeLock.request('screen');
+      wakeActive = true;
+      updateButton(true);
+      wakeLock.addEventListener('release', () => {
+        wakeActive = false;
+        updateButton(false);
+        console.log('Wake Lock released');
+      });
+      console.log('Wake Lock active');
+    } catch (err) {
+      console.error(`Wake Lock error: ${err.name}, ${err.message}`);
+    }
+  }
+  function releaseWakeLock() {
+    if (wakeLock !== null) {
+      wakeLock.release();
+      wakeLock = null;
+    }
+  }
+  function updateButton(active) {
+    if (active) {
+      wakeButton.classList.add('is-success');
+      wakeButton.classList.remove('is-light');
+      wakeButton.querySelector('.icon i').classList.replace('fa-moon', 'fa-sun');
+      wakeButton.querySelector('span:nth-child(2)').textContent = 'Awake';
+    } else {
+      wakeButton.classList.remove('is-success');
+      wakeButton.classList.add('is-light');
+      wakeButton.querySelector('.icon i').classList.replace('fa-sun', 'fa-moon');
+      wakeButton.querySelector('span:nth-child(2)').textContent = 'Keep Awake';
+    }
+  }
+  // Re-acquire on visibility change
+  document.addEventListener('visibilitychange', () => {
+    if (wakeActive && document.visibilityState === 'visible') {
+      requestWakeLock();
+    }
+  });
+  // Toggle wake lock on button click
+  wakeButton.addEventListener('click', () => {
+    if (wakeActive) {
+      releaseWakeLock();
+    } else {
+      requestWakeLock();
+    }
+  });
+</script>
+</div>
+</body>
+</html>

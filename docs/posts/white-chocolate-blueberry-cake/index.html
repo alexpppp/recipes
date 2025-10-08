@@ -1,0 +1,201 @@
+<!doctype html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>White Chocolate Blueberry Cake</title>
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link rel="stylesheet" href="/css/custom.css">
+
+  <!-- Font Awesome CDN -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div class="page-wrapper">
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="/">
+                <span class="icon is-large is-left has-text-success">
+                    <i class="fas fa-2x fa-home"></i>
+                </span>
+            </a>
+            <div class="navbar-item">
+            <button id="wake-toggle" class="button is-small is-light">
+              <span class="icon"><i class="fas fa-moon"></i></span>
+              <span>Keep Awake</span>
+            </button>
+          </div>
+        </div>
+    </nav>
+    <main class="has-background-light">
+        <section class="section">
+          <div class="container is-max-desktop p-6-desktop">
+            <!-- Title -->
+            <h1 class="title">White Chocolate Blueberry Cake</h1>
+             <!-- Meta Info (Time, Servings, Tags) -->
+            <div id="recipe-meta" class="columns is-mobile is-multiline is-variable is-1">
+              
+              
+              
+              <div class="column is-full">
+                <div class="tags are-medium">
+                  
+                    
+                  
+                    
+                      <span class="tag is-primary is-light">Baking</span>
+                    
+                  
+                    
+                      <span class="tag is-primary is-light">Dessert</span>
+                    
+                  
+                </div>
+              </div>
+              
+            </div>
+            <!-- Image -->
+            
+            <figure class="image mb-5">
+              <img src="/img/white-chocolate-blueberry-cake.jpg" alt="Photo of White Chocolate Blueberry Cake">
+            </figure>
+            
+            <div class="content">
+            
+            <!-- Ingredients and Instructions -->
+              
+              <h2 class="subtitle is-4"><span class="icon"><i class="fas fa-spoon"></i></span> Ingredients</h2>
+                <ul>
+                <div class="has-text-weight-light">
+                  
+                    <li>300g olivani</li>
+                  
+                    <li>300g sugar</li>
+                  
+                    <li>2 tsp vanilla extract</li>
+                  
+                    <li>6 eggs</li>
+                  
+                    <li>200g flour</li>
+                  
+                    <li>200g ground almonds</li>
+                  
+                    <li>Pinch of sea salt</li>
+                  
+                    <li>4 tsp baking powder</li>
+                  
+                    <li>260g greek yoghurt</li>
+                  
+                    <li>Zest of 1 large orange</li>
+                  
+                    <li>165g white chocolate chips</li>
+                  
+                    <li>390g fresh or frozen blueberries</li>
+                  
+                    <li>400g cream cheese</li>
+                  
+                    <li>Juice of 1/2 lime or lemon</li>
+                  
+                    <li>1 tsp vanilla extract (for icing)</li>
+                  
+                    <li>6 TBS maple syrup</li>
+                  
+                    <li>Blueberries (for topping)</li>
+                  
+                    <li>White chocolate (for topping)</li>
+                  
+                  </div>
+                </ul>
+              
+              
+              
+              <h2 class="subtitle is-4"><span class="icon"><i class="fas fa-list-check"></i></span> Method</h2>
+                <ol>
+                  
+                    <li class="mb-3">Preheat oven to 180°C. Line three 22cm cake tins with baking paper and optionally grease them.</li>
+                  
+                    <li class="mb-3">Cream olivani and sugar until pale and fluffy.</li>
+                  
+                    <li class="mb-3">Add vanilla and eggs, one at a time, beating well between each addition.</li>
+                  
+                    <li class="mb-3">Sift in flour, ground almonds, salt, and baking powder. Mix gently.</li>
+                  
+                    <li class="mb-3">Add yoghurt and orange zest, mixing until just combined.</li>
+                  
+                    <li class="mb-3">Divide batter evenly between tins and press in white chocolate chips and blueberries so they are level with or just below the surface.</li>
+                  
+                    <li class="mb-3">Bake for ~30 minutes until golden brown and a skewer comes out clean.</li>
+                  
+                    <li class="mb-3">Cool cakes in tins for 10 minutes, then turn out onto a rack to cool completely.</li>
+                  
+                    <li class="mb-3">For icing, beat cream cheese until smooth. Add lime/lemon juice, vanilla, and maple syrup, and beat until well combined.</li>
+                  
+                    <li class="mb-3">Assemble the cake by spreading a thin layer of icing between each layer. Stack the layers and ice the top.</li>
+                  
+                    <li class="mb-3">Top with fresh or frozen blueberries and white chocolate.</li>
+                  
+                    <li class="mb-3">Store in an airtight container for up to 3 days.</li>
+                  
+                </ol>
+            </div>
+          </div>
+        </section>
+      </main>
+      <script>
+  let wakeLock = null;
+  const wakeButton = document.getElementById('wake-toggle');
+  let wakeActive = false;
+  async function requestWakeLock() {
+    try {
+      wakeLock = await navigator.wakeLock.request('screen');
+      wakeActive = true;
+      updateButton(true);
+      wakeLock.addEventListener('release', () => {
+        wakeActive = false;
+        updateButton(false);
+        console.log('Wake Lock released');
+      });
+      console.log('Wake Lock active');
+    } catch (err) {
+      console.error(`Wake Lock error: ${err.name}, ${err.message}`);
+    }
+  }
+  function releaseWakeLock() {
+    if (wakeLock !== null) {
+      wakeLock.release();
+      wakeLock = null;
+    }
+  }
+  function updateButton(active) {
+    if (active) {
+      wakeButton.classList.add('is-success');
+      wakeButton.classList.remove('is-light');
+      wakeButton.querySelector('.icon i').classList.replace('fa-moon', 'fa-sun');
+      wakeButton.querySelector('span:nth-child(2)').textContent = 'Awake';
+    } else {
+      wakeButton.classList.remove('is-success');
+      wakeButton.classList.add('is-light');
+      wakeButton.querySelector('.icon i').classList.replace('fa-sun', 'fa-moon');
+      wakeButton.querySelector('span:nth-child(2)').textContent = 'Keep Awake';
+    }
+  }
+  // Re-acquire on visibility change
+  document.addEventListener('visibilitychange', () => {
+    if (wakeActive && document.visibilityState === 'visible') {
+      requestWakeLock();
+    }
+  });
+  // Toggle wake lock on button click
+  wakeButton.addEventListener('click', () => {
+    if (wakeActive) {
+      releaseWakeLock();
+    } else {
+      requestWakeLock();
+    }
+  });
+</script>
+</div>
+</body>
+</html>
