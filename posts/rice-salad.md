@@ -1,7 +1,6 @@
 ---
 title: Asian Rice Salad
 tags: ["dinner", "salad"]
-imgFile: "almond-lime-raspberry-cake.jpg"
 source: From Sez and Jack
 ingredients:
   - 1 cup rice (brown or long grain)
