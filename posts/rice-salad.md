@@ -13,7 +13,7 @@ ingredients:
   - 1/2 cup toasted sunflower seeds
   - 1/2 cup toasted pumpkin seeds
   - 1/4 cup sesame seeds
-dressing:
+  - DRESSING
   - 1/2 cup peanut oil or olive oil
   - 1/4 cup lime juice
   - 2 garlic cloves, crushed
