@@ -6,7 +6,7 @@ ingredients:
   - 1 cos lettuce
   - Shaved parmesan
   - Paprika and/or chilli powder
-dressing:
+  - DRESSING:
   - 3 tbsp Greek yoghurt
   - 3 tbsp mayonnaise
   - Zest of 1 lime
